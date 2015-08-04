@@ -1,18 +1,22 @@
 require 'csv'
 require 'pry'
 require_relative 'customer_repository'
+require_relative 'customer_loader'
 
 
 class SalesEngine
-  attr_reader :customer_repository
+  attr_reader :customer_repository, :customer_data
+
+  def initialize
+    @customer_data = CustomerLoader.new.load_all
+  end
 
   def startup
-    file = "./data/customers.csv"
-    data = CSV.open(file, headers: true, header_converters: :symbol)
-    @customer_repository = CustomerRepository.new(data)
+    binding.pry
+    @customer_repository = CustomerRepository.new(@customer_data, self)
     binding.pry
   end
 
 end
 
-k = SalesEngine.new.startup
+p k = SalesEngine.new.startup
