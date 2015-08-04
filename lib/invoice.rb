@@ -1,0 +1,6 @@
+class Invoices
+	
+	
+
+
+end
