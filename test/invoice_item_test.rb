@@ -11,16 +11,20 @@ class InvoiceItemTest < Minitest::Test
 		invoice_items = invoice_data.map { |row| Invoice.new(row, nil) }
 
 		id_result 				= invoice_items[0].id
-		first_name_result = invoice_items[0].first_name
-		last_name_result  = invoice_items[0].last_name
-		created_at_result = invoice_items[0].created_at
-		updated_at_result = invoice_items[0].updated_at
+		item_id_result = invoice_items[0].item_id
+		invoice_id_result  = invoice_items[0].invoice_id
+		quantity_result = invoice_items[0].quantity
+		unit_price_result = invoice_items[0].unit_price
+    created_at_result = invoice_items[0].created_at
+    updated_at_result = invoice_items[0].updated_at
 
-		assert_equal "1", id_result
-		assert_equal "Joey", first_name_result
-		assert_equal "Ondricka", last_name_result
+    assert_equal "1", id_result
+		assert_equal "539", item_id_result
+		assert_equal "1", invoice_id_result
+		assert_equal "5", quantity_result
+		assert_equal "13635", unit_price_result
 		assert_equal "2012-03-27 14:54:09 UTC", created_at_result
-		assert_equal "2012-03-27 14:54:09 UTC", updated_at_result
+    assert_equal "2012-03-27 14:54:09 UTC", updated_at_result
 	end
 
 end
