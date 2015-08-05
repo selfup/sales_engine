@@ -1,7 +1,5 @@
 require 'csv'
 require 'pry'
-require_relative 'customer_repository'
-
 
 class CustomerLoader
 
