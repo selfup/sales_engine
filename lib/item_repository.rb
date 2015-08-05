@@ -1,14 +1,14 @@
 require_relative 'invoice'
 
-class InvoiceRepository
+class ItemRepository
 
   attr_reader :all
 
   def initialize(rows, sales_engine)
-    @all = load_customers(rows)
+    @all = load_items(rows)
   end
 
-  def load_customers(rows)
+  def load_items(rows)
     rows.map { |row| Invoice.new(row, self) }
   end
 
