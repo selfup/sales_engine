@@ -5,16 +5,18 @@ require './lib/customer.rb'
 
 class CustomerTest < Minitest::Test
 
-	def test_it_initializes_each_column
+	def setup
 		file = "./data/fixtures/single_id_customer.csv"
 		customer_data = CSV.open(file, headers: true, header_converters: :symbol)
 		customers = customer_data.map { |row| Customer.new(row, nil) }
+	end
 
-		id_result 				= customers[0].id
-		first_name_result = customers[0].first_name
-		last_name_result  = customers[0].last_name
-		created_at_result = customers[0].created_at
-		updated_at_result = customers[0].updated_at
+	def test_it_initializes_each_column
+		id_result 				= setup[0].id
+		first_name_result = setup[0].first_name
+		last_name_result  = setup[0].last_name
+		created_at_result = setup[0].created_at
+		updated_at_result = setup[0].updated_at
 
 		assert_equal "1", id_result
 		assert_equal "Joey", first_name_result

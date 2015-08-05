@@ -15,4 +15,16 @@ class CustomerRepository
     @customers
   end
 
+  def all
+    @customers.values
+  end
+
+  def random
+    @customers.values.sample
+  end
+
+  def find_by_id(id)
+    @customers[id]
+  end
+
 end

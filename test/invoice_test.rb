@@ -11,11 +11,11 @@ class InvoiceTest < Minitest::Test
 		invoices = invoice_data.map { |row| Invoice.new(row, nil) }
 
 		id_result 				 = invoices[0].id
-		customer_id_result = invoices[0].first_name
-		merchant_id_result = invoices[0].last_name
-		status_result      = invoices[0].created_at
-		created_at_result  = invoices[0].updated_at
-		updated_at_result  = invoices[0].created_at
+		customer_id_result = invoices[0].customer_id
+		merchant_id_result = invoices[0].merchant_id
+		status_result      = invoices[0].status
+		created_at_result  = invoices[0].created_at
+		updated_at_result  = invoices[0].updated_at
 
 		assert_equal "1", id_result
 		assert_equal "1", customer_id_result

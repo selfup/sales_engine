@@ -11,13 +11,13 @@ class SalesEngine
               :invoice_repository,  :invoice_data
 
   def initialize
-    @customer_data = CustomerLoader.new.load_all
-    @invoice_data  = InvoiceLoader.new.load_all
+    @customer_data ||= CustomerLoader.new.load_all
+    @invoice_data  ||= InvoiceLoader.new.load_all
   end
 
   def startup
-    @customer_repository = CustomerRepository.new(@customer_data, self)
-    @invoice_repository  = InvoiceRepository.new(@invoice_data, self)
+    @customer_repository ||= CustomerRepository.new(@customer_data, self)
+    @invoice_repository  ||= InvoiceRepository.new(@invoice_data, self)
     binding.pry
   end
 
