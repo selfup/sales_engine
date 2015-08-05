@@ -10,5 +10,3 @@ class ItemLoader
   end
 
 end
-
-# k = CustomerLoader.new.startup
