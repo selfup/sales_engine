@@ -18,10 +18,11 @@ class InvoiceTest < Minitest::Test
 		updated_at_result  = invoices[0].created_at
 
 		assert_equal "1", id_result
-		assert_equal "Joey", customer_id_result
-		assert_equal "Ondricka", merchant_id_result
-		assert_equal "2012-03-27 14:54:09 UTC", status_result
-		assert_equal "2012-03-27 14:54:09 UTC", created_at_result
+		assert_equal "1", customer_id_result
+		assert_equal "26", merchant_id_result
+		assert_equal "shipped", status_result
+		assert_equal "2012-03-25 09:54:09 UTC", created_at_result
+		assert_equal "2012-03-25 09:54:09 UTC", updated_at_result
 	end
 
 end
