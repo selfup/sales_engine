@@ -18,25 +18,15 @@ include AllRepos
   end
 
   def find_by_first_name(name)
-    customer = all.select{|value| value.first_name.downcase == name.downcase}
-    customer[0]
-    #change to detect
+    all.detect{|customer| customer.first_name.downcase == name.downcase}
   end
 
   def find_by_last_name(name)
-    customer = all.select{|value| value.last_name.downcase == name.downcase}
-    customer[0]
+    all.detect{|customer| customer.last_name.downcase == name.downcase}
   end
 
   def find_all_by_first_name(name)
-    require 'pry'; binding.pry
-    customer = all.select{|value| value.first_name.downcase == name.downcase}
-    customer
-    # customers = all.map do |customer|
-    #   if customer.first_name == first_name
-    #     customer
-    #   end
-    # end
+    all.find_all { |customer| customer.first_name == name }
   end
 
 end

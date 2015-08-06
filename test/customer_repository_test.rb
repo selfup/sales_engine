@@ -115,8 +115,8 @@ class CustomerRepositoryTest < Minitest::Test
     result = setup.find_all_by_first_name("Mariah")
 
     assert_equal 2, result.length
-    assert_equal "Mariah", result[0]
-    assert_equal "Mariah", result[1]
+    assert_equal "Mariah", result[0].first_name
+    assert_equal "Mariah", result[1].first_name
   end
 
 end
