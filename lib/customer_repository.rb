@@ -32,4 +32,7 @@ class CustomerRepository
     customer[0]
   end
 
+  #def find_by_last_name
+  #end
+
 end
