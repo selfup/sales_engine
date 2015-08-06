@@ -27,4 +27,9 @@ class CustomerRepository
     @customers[id]
   end
 
+  def find_by_first_name(name)
+    customer = all.select{|value| value.first_name.downcase == name.downcase}
+    customer[0]
+  end
+
 end

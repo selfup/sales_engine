@@ -44,4 +44,24 @@ class CustomerRepositoryTest < Minitest::Test
     assert_equal Customer, result.class
     assert_equal "3", result.id
   end
+
+  def test_it_finds_customers_with_a_lowercase_name
+    result = setup.find_by_first_name("Mariah")
+
+    assert_equal Customer, result.class
+    assert_equal "Mariah", result.first_name
+  end
+
+  def test_it_finds_customers_with_a_capital_name
+    result = setup.find_by_first_name("Leanne")
+
+    assert_equal Customer, result.class
+    assert_equal "leanne", result.first_name
+  end
+
+  def test_it_finds_customers_with_a_two_first_names
+    result = setup.find_by_first_name("Sylvester")
+
+    assert_equal NilClass, result.class
+  end
 end
