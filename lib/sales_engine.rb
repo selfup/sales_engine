@@ -22,5 +22,3 @@ class SalesEngine
   end
 
 end
-
-p k = SalesEngine.new.startup
