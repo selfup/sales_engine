@@ -12,6 +12,9 @@ module Query
     @repository[id]
   end
 
+  def find_by_merchant_name(name)
+  end
+
   def find_by_first_name(name)
     customer = all.select{|value| value.first_name.downcase == name.downcase}
     customer[0]

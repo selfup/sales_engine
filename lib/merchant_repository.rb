@@ -1,18 +1,21 @@
 require_relative 'merchant'
+require_relative 'query'
 
 class MerchantRepository
 
-  attr_reader :merchants
+  include Query
+
+  attr_reader :repository
 
   def initialize(rows, sales_engine)
-    @merchants  ||= load_merchants(rows)
+    @repository  ||= load_merchants(rows)
     @sales_engine = sales_engine
   end
 
   def load_merchants(rows)
-    @merchants = Hash.new(0)
-    rows.map { |row| @merchants[row[:id]] = Merchant.new(row, self) }
-    @merchants
+    @repository = Hash.new(0)
+    rows.map { |row| @repository[row[:id]] = Merchant.new(row, self) }
+    @repository
   end
 
 end
