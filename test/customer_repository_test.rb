@@ -16,7 +16,7 @@ class CustomerRepositoryTest < Minitest::Test
 		customer_data = CSV.open(file, headers: true, header_converters: :symbol)
 		customer_repo = CustomerRepository.new(customer_data, nil)
 
-    result = customer_repo.customers["1"].class
+    result = customer_repo.repository["1"].class
 
     assert_equal Customer, result
   end
@@ -45,23 +45,70 @@ class CustomerRepositoryTest < Minitest::Test
     assert_equal "3", result.id
   end
 
-  def test_it_finds_customers_with_a_lowercase_name
+  def test_it_finds_a_customer_with_a_lowercase_name
     result = setup.find_by_first_name("Mariah")
 
     assert_equal Customer, result.class
     assert_equal "Mariah", result.first_name
   end
 
-  def test_it_finds_customers_with_a_capital_name
+  def test_it_finds_a_customer_with_a_capital_name
     result = setup.find_by_first_name("Leanne")
 
     assert_equal Customer, result.class
     assert_equal "leanne", result.first_name
   end
 
-  def test_it_finds_customers_with_a_two_first_names
+  def test_it_finds_a_customer_with_two_first_names
+    result = setup.find_by_first_name("Sylvester Stallone")
+
+    assert_equal Customer, result.class
+    assert_equal "Sylvester Stallone", result.first_name
+  end
+
+  def test_it_does_not_return_a_customer_with_two_first_names
     result = setup.find_by_first_name("Sylvester")
 
     assert_equal NilClass, result.class
   end
+
+  def test_it_returns_nil_for_a_customer_that_does_not_exist
+    result = setup.find_by_first_name("hank")
+
+    assert_equal NilClass, result.class
+  end
+
+  def test_it_finds_a_customer_with_a_lowercase_last_name
+    result = setup.find_by_last_name("considine")
+
+    assert_equal Customer, result.class
+    assert_equal "Considine", result.last_name
+  end
+
+  def test_it_finds_a_customer_with_a_capital_last_name
+    result = setup.find_by_last_name("Considine")
+
+    assert_equal Customer, result.class
+    assert_equal "Considine", result.last_name
+  end
+
+  def test_it_finds_a_customer_with_two_last_names
+    result = setup.find_by_last_name("Rusty Kuhn")
+
+    assert_equal Customer, result.class
+    assert_equal "Rusty Kuhn", result.last_name
+  end
+
+  def test_it_does_not_return_a_customer_with_two_last_names
+    result = setup.find_by_last_name("Rusty")
+
+    assert_equal NilClass, result.class
+  end
+
+  def test_it_returns_nil_for_a_customer_last_name_that_does_not_exist
+    result = setup.find_by_last_name("hank")
+
+    assert_equal NilClass, result.class
+  end
+
 end
