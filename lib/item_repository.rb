@@ -17,8 +17,8 @@ include AllRepos
     @repository
   end
 
-  def find_by_item_name(item_name)
-    all.detect{|item| item.name.downcase == item_name.downcase}
+  def find_by_items_name(thing)
+    all.detect{|item| item.name.downcase == thing.downcase}
   end
 
   def find_all_by_item_name(item_name)
