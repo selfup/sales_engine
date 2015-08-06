@@ -18,4 +18,12 @@ class MerchantRepository
     @repository
   end
 
+  def find_by_merchant_name(merchant_name)
+    all.detect{|merchant| merchant.name.downcase == merchant_name.downcase}
+  end
+
+  def find_all_by_merchant_name(merchant_name)
+    all.select{|merchant| merchant.name.downcase == merchant_name.downcase}
+  end
+
 end
