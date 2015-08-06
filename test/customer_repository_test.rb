@@ -22,7 +22,7 @@ class CustomerRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_all_instances_of_customers
-    assert_equal 10, setup.all.length
+    assert_equal 11, setup.all.length
     assert_equal Customer, setup.all[0].class
   end
 
@@ -109,6 +109,14 @@ class CustomerRepositoryTest < Minitest::Test
     result = setup.find_by_last_name("hank")
 
     assert_equal NilClass, result.class
+  end
+
+  def test_it_returns_all_customers_with_matching_first_names
+    result = setup.find_all_by_first_name("Mariah")
+
+    assert_equal 2, result.length
+    assert_equal "Mariah", result[0]
+    assert_equal "Mariah", result[1]
   end
 
 end

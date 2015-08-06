@@ -1,9 +1,9 @@
 require_relative 'merchant'
-require_relative 'query'
+require_relative 'all_repos'
 
 class MerchantRepository
 
-  include Query
+  include AllRepos
 
   attr_reader :repository
 

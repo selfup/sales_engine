@@ -1,4 +1,4 @@
-module Query
+module AllRepos
 
   def all
     @repository.values

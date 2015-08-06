@@ -1,8 +1,8 @@
 require_relative 'customer'
-require_relative 'query'
+require_relative 'all_repos'
 
 class CustomerRepository
-include Query
+include AllRepos
 
   attr_reader :repository
 
@@ -20,11 +20,23 @@ include Query
   def find_by_first_name(name)
     customer = all.select{|value| value.first_name.downcase == name.downcase}
     customer[0]
+    #change to detect
   end
 
   def find_by_last_name(name)
     customer = all.select{|value| value.last_name.downcase == name.downcase}
     customer[0]
+  end
+
+  def find_all_by_first_name(name)
+    require 'pry'; binding.pry
+    customer = all.select{|value| value.first_name.downcase == name.downcase}
+    customer
+    # customers = all.map do |customer|
+    #   if customer.first_name == first_name
+    #     customer
+    #   end
+    # end
   end
 
 end
