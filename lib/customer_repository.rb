@@ -26,7 +26,11 @@ include AllRepos
   end
 
   def find_all_by_first_name(name)
-    all.find_all { |customer| customer.first_name == name }
+    all.select { |customer| customer.first_name.downcase == name.downcase }
+  end
+
+  def find_all_by_last_name(name)
+    all.select { |customer| customer.last_name.downcase == name.downcase }
   end
 
 end

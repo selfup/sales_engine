@@ -119,4 +119,38 @@ class CustomerRepositoryTest < Minitest::Test
     assert_equal "Mariah", result[1].first_name
   end
 
+  def test_it_returns_all_customers_with_lowercase_first_names
+    result = setup.find_all_by_first_name("Leanne")
+
+    assert_equal 1, result.length
+    assert_equal "leanne", result[0].first_name
+  end
+
+  def test_it_returns_an_empty_array_when_first_name_does_not_exist
+    result = setup.find_all_by_first_name("Sylvester")
+
+    assert_equal [], result
+  end
+
+  def test_it_returns_all_customers_with_matching_last_names
+    result = setup.find_all_by_last_name("Toy")
+
+    assert_equal 2, result.length
+    assert_equal "Toy", result[0].last_name
+    assert_equal "Toy", result[1].last_name
+  end
+
+  def test_it_returns_all_customers_with_lowercase_last_names
+    result = setup.find_all_by_last_name("Braun")
+
+    assert_equal 1, result.length
+    assert_equal "braun", result[0].last_name
+  end
+
+  def test_it_returns_an_empty_array_when_last_name_does_not_exist
+    result = setup.find_all_by_last_name("Rusty")
+
+    assert_equal [], result
+  end
+
 end
