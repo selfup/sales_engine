@@ -51,52 +51,83 @@ class InvoiceRepositoryTest < Minitest::Test
     assert_equal Invoice, result.class
     assert_equal "1", result.customer_id
   end
-  #
-  # def test_it_finds_a_invoice_with_a_capital_name
-  #   result = setup.find_by_invoice_name("Cummings-Chiel")
-  #
-  #   assert_equal Invoice, result.class
-  #   assert_equal "cummings-chiel", result.name
-  # end
-  #
-  # def test_it_finds_a_invoice_with_two_first_names
-  #   result = setup.find_by_invoice_name("Williamson Group")
-  #
-  #   assert_equal Invoice, result.class
-  #   assert_equal "Williamson Group", result.name
-  # end
-  #
-  # def test_it_does_not_return_a_invoice_with_two_first_names
-  #   result = setup.find_by_invoice_name("Williamson")
-  #
-  #   assert_equal NilClass, result.class
-  # end
-  #
-  # def test_it_returns_nil_for_a_invoice_that_does_not_exist
-  #   result = setup.find_by_invoice_name("hank")
-  #
-  #   assert_equal NilClass, result.class
-  # end
-  #
-  # def test_it_returns_all_invoices_with_matching_names
-  #   result = setup.find_all_by_invoice_name("Williamson Group")
-  #
-  #   assert_equal 2, result.length
-  #   assert_equal "Williamson Group", result[0].name
-  #   assert_equal "Williamson Group", result[1].name
-  # end
-  #
-  # def test_it_returns_all_invoices_with_lowercase_names
-  #   result = setup.find_all_by_invoice_name("cummings-chiel")
-  #
-  #   assert_equal 1, result.length
-  #   assert_equal "cummings-chiel", result[0].name
-  # end
-  #
-  # def test_it_returns_an_empty_array_when_invoice_name_does_not_exist
-  #   result = setup.find_all_by_invoice_name("Sylvester")
-  #
-  #   assert_equal [], result
-  # end
+
+  def test_it_finds_an_invoice_merchant_id
+    result = setup.find_by_merchant_id("78")
+
+    assert_equal Invoice, result.class
+    assert_equal "78", result.merchant_id
+  end
+
+  def test_it_finds_an_invoice_status
+    result = setup.find_by_status("shipped")
+
+    assert_equal Invoice, result.class
+    assert_equal "shipped", result.status
+  end
+
+  def test_it_returns_nil_for_a_invoice_that_does_not_exist
+    result = setup.find_by_id("hank")
+
+    assert_equal Fixnum, result.class
+  end
+
+  def test_it_returns_all_customer_ids
+    result = setup.find_all_by_customer_id("1")
+
+    assert_equal 9, result.length
+    assert_equal "1", result[0].customer_id
+    assert_equal "1", result[1].customer_id
+    assert_equal "1", result[2].customer_id
+    assert_equal "1", result[3].customer_id
+    assert_equal "1", result[4].customer_id
+    assert_equal "1", result[5].customer_id
+    assert_equal "1", result[6].customer_id
+    assert_equal "1", result[7].customer_id
+    assert_equal "1", result[8].customer_id
+  end
+
+  def test_it_returns_an_empty_array_when_an_invoice_customer_id_does_not_exist
+    result = setup.find_all_by_customer_id("Sylvester")
+
+    assert_equal [], result
+  end
+
+  def test_it_returns_all_merchant_ids
+    result = setup.find_all_by_merchant_id("75")
+
+    assert_equal 2, result.length
+    assert_equal "75", result[0].merchant_id
+    assert_equal "75", result[1].merchant_id
+  end
+
+  def test_it_returns_an_empty_array_when_an_invoice_merchant_id_does_not_exist
+    result = setup.find_all_by_merchant_id("Sylvester")
+
+    assert_equal [], result
+  end
+
+  def test_it_returns_all_statuses
+    result = setup.find_all_by_status("shipped")
+
+    assert_equal 11, result.length
+    assert_equal "shipped", result[0].status
+    assert_equal "shipped", result[1].status
+    assert_equal "shipped", result[2].status
+    assert_equal "shipped", result[3].status
+    assert_equal "shipped", result[4].status
+    assert_equal "shipped", result[5].status
+    assert_equal "shipped", result[6].status
+    assert_equal "shipped", result[7].status
+    assert_equal "shipped", result[8].status
+    assert_equal "shipped", result[9].status
+    assert_equal "shipped", result[10].status
+  end
+
+  def test_it_returns_an_empty_array_when_an_invoice_status_does_not_exist
+    result = setup.find_all_by_status("Sylvester")
+
+    assert_equal [], result
+  end
 
 end
