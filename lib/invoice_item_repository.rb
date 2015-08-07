@@ -1,15 +1,20 @@
 require_relative 'invoice_item'
+require_relative 'all_repos'
 
 class InvoiceItemRepository
+include AllRepos
 
-  attr_reader :invoice_items
+  attr_reader :repository
 
   def initialize(rows, sales_engine)
-    @all = load_invoice_items(rows)
+    @repository  ||= load_invoice_items(rows)
+    @sales_engine = sales_engine
   end
 
   def load_invoice_items(rows)
-    rows.map { |row| InvoiceItem.new(row, self) }
+    @repository = Hash.new(0)
+    rows.map { |row| @repository[row[:id]] = InvoiceItem.new(row, self) }
+    @repository
   end
 
 end
