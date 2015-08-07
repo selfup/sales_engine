@@ -11,7 +11,7 @@ class InvoiceRepositoryTest < Minitest::Test
 		invoice_repo = InvoiceRepository.new(invoice_data, nil)
   end
 
-  def test_it_a_invoice_object_is_created
+  def test_an_invoice_object_is_created
     file = "./data/fixtures/single_id_invoice.csv"
 		invoice_data = CSV.open(file, headers: true, header_converters: :symbol)
 		invoice_repo = InvoiceRepository.new(invoice_data, nil)
