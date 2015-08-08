@@ -2,7 +2,7 @@ require_relative 'invoice_item'
 require_relative 'all_repos'
 
 class InvoiceItemRepository
-include AllRepos
+  include AllRepos
 
   attr_reader :repository
 
@@ -16,7 +16,7 @@ include AllRepos
     rows.map { |row| @repository[row[:id]] = InvoiceItem.new(row, self) }
     @repository
   end
-# unit_price
+
   def find_by_item_id(id)
     all.detect{ |item| item.item_id == id }
   end
@@ -47,14 +47,5 @@ include AllRepos
   def find_all_by_unit_price(price)
     all.select{ |item| item.unit_price == price }
   end
-
-  #
-  # def find_all_by_merchant_id(id)
-  #   all.select { |merchant| merchant.merchant_id == id }
-  # end
-  #
-  # def find_all_by_status(status_d)
-  #   all.select{ |status_descriptor| status_descriptor.status == status_d }
-  # end
 
 end

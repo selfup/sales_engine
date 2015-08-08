@@ -124,5 +124,4 @@ class InvoiceItemRepositoryTest < Minitest::Test
     assert_equal [], result
   end
 
-
 end
