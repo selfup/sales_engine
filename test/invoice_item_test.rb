@@ -6,9 +6,9 @@ require './lib/invoice_item.rb'
 class InvoiceItemTest < Minitest::Test
 
 	def test_it_initializes_each_column
-		csv = "./data/fixtures/single_id_invoice_items.csv"
+		csv = "./data/fixtures/single_id_invoice_item.csv"
 		invoice_item_data = CSV.open(csv, headers: true, header_converters: :symbol)
-		invoice_items = invoice_data.map { |row| Invoice.new(row, nil) }
+		invoice_items = invoice_item_data.map { |row| InvoiceItem.new(row, nil) }
 
 		id_result 				= invoice_items[0].id
 		item_id_result    = invoice_items[0].item_id

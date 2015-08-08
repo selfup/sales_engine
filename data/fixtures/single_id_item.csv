@@ -1,2 +1,2 @@
-id,item_id,invoice_id,quantity,unit_price,created_at,updated_at
-1,539,1,5,13635,2012-03-27 14:54:09 UTC,2012-03-27 14:54:09 UTC
+id,name,description,unit_price,merchant_id,created_at,updated_at
+1,Item Qui Esse,Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.,75107,1,2012-03-27 14:53:59 UTC,2012-03-27 14:53:59 UTC
