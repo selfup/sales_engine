@@ -1,12 +1,10 @@
 require 'csv'
-require_relative 'invoice_item_repository'
-
 
 class InvoiceItemLoader
 
   def load_all(test_file = false)
-    if test_file.true?
-      file = "./data/fixtures/invoice_items_fixtures.csv"
+    if test_file
+      file = "./data/fixtures/invoices_items_fixtures.csv"
     else
       file = "./data/invoice_items.csv"
     end
