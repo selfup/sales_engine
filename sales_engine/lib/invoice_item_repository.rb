@@ -4,11 +4,11 @@ require_relative 'all_repos'
 class InvoiceItemRepository
   include AllRepos
 
-  attr_reader :repository
+  attr_reader :repository, :sales_engine
 
   def initialize(rows, sales_engine)
-    @repository  ||= load_invoice_items(rows)
-    @sales_engine = sales_engine
+    @repository   ||= load_invoice_items(rows)
+    @sales_engine ||= sales_engine
   end
 
   def load_invoice_items(rows)
