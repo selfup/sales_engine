@@ -73,4 +73,18 @@ class TransactionRepositoryTest < Minitest::Test
     assert_equal "4354495077693036", result[1].credit_card_number
   end
 
+  def test_it_finds_a_transaction_reult
+    result = setup.find_by_result("failed")
+
+    assert_equal "3", result.id
+  end
+
+  def test_it_finds_all_transactions_given_a_result
+    result = setup.find_all_by_result("success")
+
+    assert_equal 9, result.length
+    assert_equal "success", result[0].result
+  end
+
+
 end

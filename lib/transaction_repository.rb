@@ -33,4 +33,13 @@ class TransactionRepository
     all.select{|transaction| transaction.credit_card_number == card_number}
   end
 
+  def find_by_result(result)
+    all.detect{|transaction| transaction.result == result}
+  end
+
+  def find_all_by_result(result)
+    all.select{|transaction| transaction.result == result}
+  end
+
+
 end
