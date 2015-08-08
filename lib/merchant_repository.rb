@@ -5,7 +5,7 @@ class MerchantRepository
 
   include AllRepos
 
-  attr_reader :repository
+  attr_reader :repository, :sales_engine
 
   def initialize(rows, sales_engine)
     @repository  ||= load_merchants(rows)
