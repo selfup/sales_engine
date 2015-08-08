@@ -37,6 +37,18 @@ include AllRepos
     all.select { |customer| customer.customer_id == id }
   end
 
+  def find_all_by_unit_price(status_d)
+    all.select{ |status_descriptor| status_descriptor.status == status_d }
+  end
+
+  def find_all_by_quantity(status_d)
+    all.select{ |status_descriptor| status_descriptor.status == status_d }
+  end
+
+  def find_all_by_invoice_id(id)
+    all.select{ |merchant| merchant.merchant_id == id }
+  end
+
   def find_all_by_merchant_id(id)
     all.select { |merchant| merchant.merchant_id == id }
   end

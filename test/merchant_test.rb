@@ -46,8 +46,7 @@ class MerchantTest < Minitest::Test
 	def test_it_returns_a_collection_of_invoice_instances_associated_with_merchant
 		engine = SalesEngine.new(true)
 		engine.startup
-
-		result = engine.merchant_repository.repository["75"].invoices
+		result = engine.merchant_repository.repository["1"].invoices
 		result = result.map { |invoice| invoice.id }
 
 		assert_equal 2, result.length

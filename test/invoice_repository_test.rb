@@ -94,11 +94,11 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_all_merchant_ids
-    result = setup.find_all_by_merchant_id("75")
+    result = setup.find_all_by_merchant_id("1")
 
     assert_equal 2, result.length
-    assert_equal "75", result[0].merchant_id
-    assert_equal "75", result[1].merchant_id
+    assert_equal "1", result[0].merchant_id
+    assert_equal "1", result[1].merchant_id
   end
 
   def test_it_returns_an_empty_array_when_an_invoice_merchant_id_does_not_exist

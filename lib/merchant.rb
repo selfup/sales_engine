@@ -13,7 +13,7 @@ class Merchant
     item_repo = @merchant_repository.sales_engine.item_repository
     item_repo.find_all_by_merchant_id(@id)
   end
-
+  
   def invoices
     invoice_repo = @merchant_repository.sales_engine.invoice_repository
     invoice_repo.find_all_by_merchant_id(@id)

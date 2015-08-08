@@ -16,11 +16,12 @@ require_relative 'transaction_loader'
 class SalesEngine
   attr_reader :merchant_repository, :merchant_data,
               :item_repository, :item_data,
-              :invoice_repository,  :invoice_data
+              :invoice_repository,  :invoice_data,
+              :invoice_item_repository, :inv_item_data
+
               #:customer_repository, :customer_data,
               # :merchant_repository, :merchant_data,
               # :item_repository, :item_data
-              #:invoice_item_repository, :inv_item_data,
               #:transaction_repository, :trans_data
 
   def initialize(test_file = false)
@@ -28,7 +29,7 @@ class SalesEngine
     @invoice_data  ||= InvoiceLoader.new.load_all(test_file)
     @merchant_data ||= MerchantLoader.new.load_all(test_file)
     @item_data     ||= ItemLoader.new.load_all(test_file)
-    # @inv_item_data ||= InvoiceItemLoader.new.load_all(test_file)
+    @inv_item_data ||= InvoiceItemLoader.new.load_all(test_file)
     # @trans_data    ||= TransactionLoader.new.load_all(test_file)
   end
 
@@ -37,7 +38,7 @@ class SalesEngine
     @invoice_repository      ||= InvoiceRepository.new(@invoice_data, self)
     @merchant_repository     ||= MerchantRepository.new(@merchant_data, self)
     @item_repository         ||= ItemRepository.new(@item_data, self)
-    # @invoice_item_repository ||= InvoiceItemRepository.new(@inv_item_data, self)
+    @invoice_item_repository ||= InvoiceItemRepository.new(@inv_item_data, self)
     # @transaction_repository  ||= TransactionRepository.new(@trans_data, self)
   end
 

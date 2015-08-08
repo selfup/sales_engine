@@ -13,4 +13,14 @@ class Item
     @item_repository = item_repository
   end
 
+  def invoice_items
+    item_repo = @item_repository.sales_engine.invoice_item_repository
+    item_repo.find_by_invoice_item_id(@id)
+  end
+
+  def invoices
+    invoice_repo = @item_repository.sales_engine.invoice_item_repository
+    invoice_repo.find_by_item_id(@id)
+  end
+
 end
