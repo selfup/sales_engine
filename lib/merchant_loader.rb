@@ -1,10 +1,9 @@
 require 'csv'
-require 'pry'
 
 class MerchantLoader
 
   def load_all(test_file = false)
-    if test_file 
+    if test_file
       file = "./data/fixtures/merchants_fixtures.csv"
     else
       file = "./data/merchants.csv"
