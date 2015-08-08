@@ -36,11 +36,23 @@ class MerchantTest < Minitest::Test
     assert_equal "4", result[3]
     assert_equal "5", result[4]
     assert_equal "6", result[5]
-    assert_equal "7", result[6]
+    assert_equal "72", result[6]
     assert_equal "8", result[7]
     assert_equal "9", result[8]
-    assert_equal "10", result[9]
+    assert_equal "99", result[9]
     assert_equal "11", result[10]
+	end
+
+	def test_it_returns_a_collection_of_invoice_instances_associated_with_merchant
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result = engine.merchant_repository.repository["75"].invoices
+		result = result.map { |invoice| invoice.id }
+
+		assert_equal 2, result.length
+		assert_equal "2", result[0]
+		assert_equal "11", result[1]
 	end
 
 end
