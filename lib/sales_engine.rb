@@ -17,16 +17,16 @@ class SalesEngine
               :invoice_repository,  :invoice_data,
               :merchant_repository, :merchant_data,
               :item_repository, :item_data,
-              :invoice_item_repository, :invoice_item_data,
-              :transaction_repository, :transaction_data
+              :invoice_item_repository, :inv_item_data,
+              :transaction_repository, :trans_data
 
   def initialize
-    @customer_data     ||= CustomerLoader.new.load_all
-    @invoice_data      ||= InvoiceLoader.new.load_all
-    @merchant_data     ||= MerchantLoader.new.load_all
-    @item_data         ||= ItemLoader.new.load_all
-    @invoice_item_data ||= InvoiceItemLoader.new.load_all
-    @transaction_data  ||= TransactionLoader.new.load_all
+    @customer_data ||= CustomerLoader.new.load_all
+    @invoice_data  ||= InvoiceLoader.new.load_all
+    @merchant_data ||= MerchantLoader.new.load_all
+    @item_data     ||= ItemLoader.new.load_all
+    @inv_item_data ||= InvoiceItemLoader.new.load_all
+    @trans_data    ||= TransactionLoader.new.load_all
   end
 
   def startup
@@ -34,8 +34,8 @@ class SalesEngine
     @invoice_repository      ||= InvoiceRepository.new(@invoice_data, self)
     @merchant_repository     ||= MerchantRepository.new(@merchant_data, self)
     @item_repository         ||= ItemRepository.new(@item_data, self)
-    @invoice_item_repository ||= InvoiceItemRepository.new(@item_data, self)
-    @transaction_repository  ||= TransactionRepository.new(@item_data, self)
+    @invoice_item_repository ||= InvoiceItemRepository.new(@inv_item_data, self)
+    @transaction_repository  ||= TransactionRepository.new(@trans_data, self)
   end
 
 end
