@@ -32,9 +32,9 @@ class InvoiceItemTest < Minitest::Test
 		engine = SalesEngine.new(true)
 		engine.startup
 
-		result = engine.invoice_item_repository.repository["1"].invoice
+		result = engine.invoice_item_repository.repository["9"].invoice
 
-		assert_equal "1", result.id
+		assert_equal "2", result.id
 		assert_equal Invoice, result.class
 	end
 
