@@ -20,7 +20,7 @@ class Item
 
   def merchant
     merchant_repo = @item_repository.sales_engine.merchant_repository
-    merchant_repo.find_by_id(@id)
+    merchant_repo.find_by_id(@merchant_id)
   end
 
 end
