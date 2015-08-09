@@ -37,5 +37,15 @@ class InvoiceTest < Minitest::Test
 		assert_equal "10", result[1].id
 	end
 
+	def test_it_returns_an_invoice_instance_associated_with_invoice_items
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result = engine.invoice_repository.repository["2"].invoice_items
+
+		assert_equal 2, result.length
+		assert_equal "9", result[0].id
+		assert_equal "10", result[1].id
+	end
 
 end

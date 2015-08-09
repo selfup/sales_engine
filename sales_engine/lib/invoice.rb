@@ -17,9 +17,9 @@ class Invoice
     transaction_repo.find_all_by_invoice_id(@id)
   end
 
-  def merchant
-    merchant_repo = @item_repository.sales_engine.merchant_repository
-    merchant_repo.find_by_id(@merchant_id)
+  def invoice_items
+    inv_items_repo = @invoice_repository.sales_engine.invoice_item_repository
+    inv_items_repo.find_all_by_invoice_id(@id)
   end
 
 end
