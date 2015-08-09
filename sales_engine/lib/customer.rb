@@ -10,4 +10,9 @@ class Customer
     @customer_repository  = customer_repository
   end
 
+  def invoices
+    invoice_repo = @customer_repository.sales_engine.invoice_repository
+    invoice_repo.find_by_customer_id(@id)
+  end
+
 end

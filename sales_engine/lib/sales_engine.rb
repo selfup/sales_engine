@@ -19,14 +19,11 @@ class SalesEngine
               :invoice_repository,  :invoice_data,
               :invoice_item_repository, :inv_item_data,
               :item_repository, :item_data,
-              :transaction_repository, :trans_data
-
-              #:customer_repository, :customer_data,
-              # :merchant_repository, :merchant_data,
-
+              :transaction_repository, :trans_data,
+              :customer_repository, :customer_data
 
   def initialize(test_file = false)
-    # @customer_data ||= CustomerLoader.new.load_all(test_file)
+    @customer_data ||= CustomerLoader.new.load_all(test_file)
     @invoice_data  ||= InvoiceLoader.new.load_all(test_file)
     @merchant_data ||= MerchantLoader.new.load_all(test_file)
     @item_data     ||= ItemLoader.new.load_all(test_file)
@@ -35,7 +32,7 @@ class SalesEngine
   end
 
   def startup
-    # @customer_repository     ||= CustomerRepository.new(@customer_data, self)
+    @customer_repository     ||= CustomerRepository.new(@customer_data, self)
     @invoice_repository      ||= InvoiceRepository.new(@invoice_data, self)
     @merchant_repository     ||= MerchantRepository.new(@merchant_data, self)
     @item_repository         ||= ItemRepository.new(@item_data, self)
