@@ -2,6 +2,7 @@ require 'csv'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/transaction.rb'
+require './lib/sales_engine'
 
 class TransactionTest < Minitest::Test
 
@@ -23,6 +24,16 @@ class TransactionTest < Minitest::Test
 		assert_equal "success", result_result
 		assert_equal "2012-03-27 14:54:09 UTC", created_at_result
 		assert_equal "2012-03-27 14:54:09 UTC", updated_at_result
+	end
+
+	def test_it_returns_an_invoice_instance_associated_with_transactions
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result = engine.transaction_repository.repository["3"].invoice
+
+		assert_equal "4", result.id
+		assert_equal Invoice, result.class
 	end
 
 end

@@ -14,4 +14,9 @@ class Transaction
     @transaction_repository      = transaction_repository
   end
 
+  def invoice
+    invoice_repo = @transaction_repository.sales_engine.invoice_repository
+    invoice_repo.find_by_id(@invoice_id)
+  end
+
 end

@@ -19,7 +19,7 @@ class InvoiceItem
   end
 
   def item
-    invoice_repo = @invoice_item_repository.sales_engine.item_repository
-    invoice_repo.find_by_id(@id)
+    item_repo = @invoice_item_repository.sales_engine.item_repository
+    item_repo.find_by_id(@id)
   end
 end

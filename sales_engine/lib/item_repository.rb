@@ -4,7 +4,7 @@ require_relative 'all_repos'
 class ItemRepository
 include AllRepos
 
-  attr_reader :repository
+  attr_reader :repository, :sales_engine
 
   def initialize(rows, sales_engine)
     @repository = load_items(rows)

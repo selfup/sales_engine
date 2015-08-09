@@ -14,13 +14,13 @@ class Item
   end
 
   def invoice_items
-    item_repo = @item_repository.sales_engine.invoice_item_repository
-    item_repo.find_by_invoice_item_id(@id)
+    inv_item_repo = @item_repository.sales_engine.invoice_item_repository
+    inv_item_repo.find_all_by_item_id(@id)
   end
 
-  def invoices
-    invoice_repo = @item_repository.sales_engine.invoice_item_repository
-    invoice_repo.find_by_item_id(@id)
+  def merchant
+    merchant_repo = @item_repository.sales_engine.merchant_repository
+    merchant_repo.find_by_id(@id)
   end
 
 end

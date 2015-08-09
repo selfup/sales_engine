@@ -4,11 +4,11 @@ require_relative 'all_repos'
 class TransactionRepository
   include AllRepos
 
-  attr_reader :repository
+  attr_reader :repository, :sales_engine
 
   def initialize(rows, sales_engine)
-    @repository  ||= load_transactions(rows)
-    @sales_engine = sales_engine
+    @repository   ||= load_transactions(rows)
+    @sales_engine ||= sales_engine
   end
 
   def load_transactions(rows)
