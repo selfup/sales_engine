@@ -48,4 +48,35 @@ class InvoiceTest < Minitest::Test
 		assert_equal "10", result[1].id
 	end
 
+	def test_it_returns_an_item_collection_associated_with_invoice_items_through_invoice
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result = engine.invoice_repository.repository["2"].items
+
+		assert_equal 2, result.length
+		assert_equal "99", result[0].id
+		assert_equal "99", result[1].id
+	end
+
+	def test_it_returns_a_customer_instance_associated_with_invoice
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result = engine.invoice_repository.repository["10"].customer
+
+		assert_equal Customer, result.class
+		assert_equal "3", result.id
+	end
+
+	def test_it_returns_a_merchant_instance_associated_with_invoice
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result = engine.invoice_repository.repository["2"].merchant
+
+		assert_equal Merchant, result.class
+		assert_equal "1", result.id
+	end
+
 end
