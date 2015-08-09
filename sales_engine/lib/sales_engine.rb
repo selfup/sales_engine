@@ -16,7 +16,7 @@ require_relative 'transaction_loader'
 class SalesEngine
   attr_reader :merchant_repository, :merchant_data,
               :item_repository, :item_data,
-              :invoice_repository,  :invoice_data,
+              :invoice_repository, :invoice_data,
               :invoice_item_repository, :inv_item_data,
               :item_repository, :item_data,
               :transaction_repository, :trans_data,

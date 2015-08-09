@@ -2,6 +2,7 @@ require 'csv'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/invoice.rb'
+require './lib/sales_engine'
 
 class InvoiceTest < Minitest::Test
 
@@ -24,5 +25,17 @@ class InvoiceTest < Minitest::Test
 		assert_equal "2012-03-25 09:54:09 UTC", created_at_result
 		assert_equal "2012-03-25 09:54:09 UTC", updated_at_result
 	end
+
+	def test_it_returns_an_invoice_instance_associated_with_transactions
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result = engine.invoice_repository.repository["10"].transactions
+
+		assert_equal 2, result.length
+		assert_equal "9", result[0].id
+		assert_equal "10", result[1].id
+	end
+
 
 end

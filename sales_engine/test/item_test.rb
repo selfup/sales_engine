@@ -46,7 +46,7 @@ class ItemTest < Minitest::Test
 
 			result = engine.item_repository.repository["1"].merchant
 
-			assert_equal "2", result.id
+			assert_equal "1", result.id
 			assert_equal Merchant, result.class
 		end
 
