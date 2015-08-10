@@ -1,4 +1,5 @@
 require 'bigdecimal'
+require 'date'
 
 class Merchant
   attr_reader :id, :name, :created_at, :updated_at
@@ -37,6 +38,8 @@ class Merchant
 
   #Check if transaction with Invoice_id is successful
     #If transaction is successful calculate revenue
+
+  #make the date a date object
 
   def revenue(date = nil)
     total_revenue = 0

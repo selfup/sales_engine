@@ -3,12 +3,12 @@ class Invoice
               :created_at, :updated_at, :invoice_repository
 
 	def initialize(params, invoice_repository)
-    @id                  = params[:id]
+    @id                  = params[:id].to_i
     @customer_id         = params[:customer_id]
     @merchant_id         = params[:merchant_id]
     @status              = params[:status]
-    @created_at          = params[:created_at]
-    @updated_at          = params[:updated_at]
+    @created_at          = DateTime.parse(params[:created_at])
+    @updated_at          = DateTime.parse(params[:updated_at])
     @invoice_repository  = invoice_repository
   end
 
