@@ -54,4 +54,13 @@ class MerchantTest < Minitest::Test
 		assert_equal "11", result[1]
 	end
 
+
+	def test_it_returns_the_total_revenue_across_all_transactions
+		engine = SalesEngine.new(true)
+		engine.startup
+		result = engine.merchant_repository.repository["1"].revenue
+
+		assert_equal ((6 * 76941) + (4 * 1859)), result
+	end
+
 end

@@ -79,4 +79,15 @@ class InvoiceTest < Minitest::Test
 		assert_equal "1", result.id
 	end
 
+	def test_invoice_is_in_a_successful_transaction
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result1 = engine.invoice_repository.repository["1"].success?
+		result2 = engine.invoice_repository.repository["11"].success?
+
+		assert_equal true, result1
+		assert_equal false, result2
+	end
+
 end

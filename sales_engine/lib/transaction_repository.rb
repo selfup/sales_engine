@@ -41,5 +41,4 @@ class TransactionRepository
     all.select{|transaction| transaction.result == result}
   end
 
-
 end

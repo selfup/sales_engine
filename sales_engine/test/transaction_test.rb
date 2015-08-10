@@ -36,4 +36,25 @@ class TransactionTest < Minitest::Test
 		assert_equal Invoice, result.class
 	end
 
+	def test_transaction_is_successful?
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result = engine.transaction_repository.repository.map do |key,trans|
+			trans.success?
+		end
+
+		assert_equal true, result[0]
+		assert_equal true, result[1]
+		assert_equal false, result[2]
+		assert_equal true, result[3]
+		assert_equal true, result[4]
+		assert_equal true, result[5]
+		assert_equal true, result[6]
+		assert_equal true, result[7]
+		assert_equal false, result[8]
+		assert_equal true, result[9]
+		assert_equal false, result[10]
+	end
+
 end

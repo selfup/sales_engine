@@ -22,7 +22,7 @@ class InvoiceItemRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_all_instances_of_invoices
-    assert_equal 10, setup.all.length
+    assert_equal 11, setup.all.length
     assert_equal InvoiceItem, setup.all[0].class
   end
 

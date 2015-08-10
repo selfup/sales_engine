@@ -7,8 +7,8 @@ include AllRepos
   attr_reader :repository, :sales_engine
 
   def initialize(rows, sales_engine)
-    @repository  ||= load_customers(rows)
-    @sales_engine = sales_engine
+    @repository   ||= load_customers(rows)
+    @sales_engine ||= sales_engine
   end
 
   def load_customers(rows)

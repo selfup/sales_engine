@@ -48,4 +48,14 @@ class InvoiceItemTest < Minitest::Test
 		assert_equal Item, result.class
 	end
 
+	def test_it_returns_an_invoice_items_revenue
+		engine = SalesEngine.new(true)
+		engine.startup
+
+		result = engine.invoice_item_repository.repository["1"].revenue
+
+		assert_equal (5 * 13635), result
+	end
+
+
 end

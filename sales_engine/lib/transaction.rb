@@ -19,4 +19,8 @@ class Transaction
     invoice_repo.find_by_id(@invoice_id)
   end
 
+  def success?
+    @result == "success"
+  end
+
 end
