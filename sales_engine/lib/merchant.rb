@@ -38,10 +38,10 @@ class Merchant
   #Check if transaction with Invoice_id is successful
     #If transaction is successful calculate revenue
 
-  def revenue
+  def revenue(date = nil)
     total_revenue = 0
     invoices.map do |invoice|
-      if invoice.success?
+      if invoice.success? && (date == nil || invoice.created_at == date)
         total_revenue += invoice_item_revenue(invoice)
       end
     end
