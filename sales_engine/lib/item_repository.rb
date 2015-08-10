@@ -49,4 +49,8 @@ include AllRepos
     all.select{ |pricing| pricing.unit_price == price }
   end
 
+  def inspect
+    "#<#{self.class} #{@repository.size} rows>"
+  end
+
 end

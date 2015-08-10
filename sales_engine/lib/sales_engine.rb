@@ -22,13 +22,13 @@ class SalesEngine
               :transaction_repository, :trans_data,
               :customer_repository, :customer_data
 
-  def initialize(test_file = false)
-    @customer_data ||= CustomerLoader.new.load_all(test_file)
-    @invoice_data  ||= InvoiceLoader.new.load_all(test_file)
-    @merchant_data ||= MerchantLoader.new.load_all(test_file)
-    @item_data     ||= ItemLoader.new.load_all(test_file)
-    @inv_item_data ||= InvoiceItemLoader.new.load_all(test_file)
-    @trans_data    ||= TransactionLoader.new.load_all(test_file)
+  def initialize(file = "")
+    @customer_data ||= CustomerLoader.new.load_all(file)
+    @invoice_data  ||= InvoiceLoader.new.load_all(file)
+    @merchant_data ||= MerchantLoader.new.load_all(file)
+    @item_data     ||= ItemLoader.new.load_all(file)
+    @inv_item_data ||= InvoiceItemLoader.new.load_all(file)
+    @trans_data    ||= TransactionLoader.new.load_all(file)
   end
 
   def startup

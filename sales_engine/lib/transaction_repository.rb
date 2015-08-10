@@ -41,4 +41,8 @@ class TransactionRepository
     all.select{|transaction| transaction.result == result}
   end
 
+  def inspect
+    "#<#{self.class} #{@repository.size} rows>"
+  end
+
 end

@@ -33,4 +33,8 @@ include AllRepos
     all.select { |customer| customer.last_name.downcase == name.downcase }
   end
 
+  def inspect
+    "#<#{self.class} #{@repository.size} rows>"
+  end
+
 end

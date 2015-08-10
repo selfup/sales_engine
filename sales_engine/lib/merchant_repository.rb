@@ -26,4 +26,8 @@ class MerchantRepository
     all.select{|merchant| merchant.name.downcase == merchant_name.downcase}
   end
 
+  def inspect
+    "#<#{self.class} #{@repository.size} rows>"
+  end
+
 end

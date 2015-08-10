@@ -41,4 +41,8 @@ include AllRepos
     all.select{ |status_descriptor| status_descriptor.status == status_d }
   end
 
+  def inspect
+    "#<#{self.class} #{@repository.size} rows>"
+  end
+
 end

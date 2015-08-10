@@ -48,4 +48,8 @@ class InvoiceItemRepository
     all.select{ |item| item.unit_price == price }
   end
 
+  def inspect
+    "#<#{self.class} #{@repository.size} rows>"
+  end
+
 end
