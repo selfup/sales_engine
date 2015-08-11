@@ -32,6 +32,16 @@ class Merchant
     total_revenue * 0.01
   end
 
+  def favorite_customer
+    customer_count = Hash.new(0)
+    invoices.map do |invoice|
+      customer_count[invoice.customer_id] += 1
+    end
+    id = customer_count.key(customer_count.values.max)
+    fc = @merchant_repository.sales_engine.customer_repository.find_by_id(id)
+    fc
+  end
+
   def invoice_item_revenue(invoice)
     inv_item_revenue = invoice.invoice_items.map do |invoice_item|
       invoice_item.revenue
