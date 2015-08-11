@@ -1,4 +1,5 @@
 require 'csv'
+require 'date'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/merchant.rb'
@@ -18,8 +19,8 @@ class MerchantTest < Minitest::Test
 
 		assert_equal 1, id_result
 		assert_equal "Schroeder-Jerde", name_result
-		assert_equal "2012-03-27 14:53:59 UTC", created_at_result
-		assert_equal "2012-03-27 14:53:59 UTC", updated_at_result
+		assert_equal Date.parse("2012-03-27 14:53:59 UTC"), created_at_result
+		assert_equal Date.parse("2012-03-27 14:53:59 UTC"), updated_at_result
 	end
 
 	def test_it_returns_a_collection_of_item_instances_associated_with_merchant

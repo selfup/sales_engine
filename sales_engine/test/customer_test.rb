@@ -1,4 +1,5 @@
 require 'csv'
+require 'date'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/customer.rb'
@@ -22,8 +23,8 @@ class CustomerTest < Minitest::Test
 		assert_equal 1, id_result
 		assert_equal "Joey", first_name_result
 		assert_equal "Ondricka", last_name_result
-		assert_equal "2012-03-27 14:54:09 UTC", created_at_result
-		assert_equal "2012-03-27 14:54:09 UTC", updated_at_result
+		assert_equal Date.parse("2012-03-27 14:54:09 UTC"), created_at_result
+		assert_equal Date.parse("2012-03-27 14:54:09 UTC"), updated_at_result
 	end
 
 	def test_it_returns_an_invoice_instance_associated_with_customers

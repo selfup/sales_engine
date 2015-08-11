@@ -1,4 +1,5 @@
 require 'csv'
+require 'date'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/invoice.rb'
@@ -22,8 +23,8 @@ class InvoiceTest < Minitest::Test
 		assert_equal 1, customer_id_result
 		assert_equal 26, merchant_id_result
 		assert_equal "shipped", status_result
-		assert_equal "2012-03-25 09:54:09 UTC", created_at_result
-		assert_equal "2012-03-25 09:54:09 UTC", updated_at_result
+		assert_equal Date.parse("2012-03-25 09:54:09 UTC"), created_at_result
+		assert_equal Date.parse("2012-03-25 09:54:09 UTC"), updated_at_result
 	end
 
 	def test_it_returns_an_invoice_instance_associated_with_transactions

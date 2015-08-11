@@ -1,4 +1,5 @@
 require 'bigdecimal'
+require 'date'
 
 class Item
   attr_reader :id, :name, :description, :merchant_id,
@@ -10,8 +11,8 @@ class Item
     @description     = params[:description]
     @merchant_id     = params[:merchant_id].to_i
     @unit_price      = BigDecimal.new(params[:unit_price])
-    @created_at      = params[:created_at]
-    @updated_at      = params[:updated_at]
+    @created_at      = Date.parse(params[:created_at])
+    @updated_at      = Date.parse(params[:updated_at])
     @item_repository = item_repository
   end
 

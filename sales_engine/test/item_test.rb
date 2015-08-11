@@ -1,4 +1,5 @@
 require 'csv'
+require 'date'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/item.rb'
@@ -25,8 +26,8 @@ class ItemTest < Minitest::Test
 		assert_equal description, description_result
 		assert_equal 75107, unit_price_result
 		assert_equal 1, merchant_id_result
-		assert_equal "2012-03-27 14:53:59 UTC", created_at_result
-		assert_equal "2012-03-27 14:53:59 UTC", updated_at_result
+		assert_equal Date.parse("2012-03-27 14:53:59 UTC"), created_at_result
+		assert_equal Date.parse("2012-03-27 14:53:59 UTC"), updated_at_result
 	end
 
 		def test_it_returns_a_collection_invoice_item_instance_associated_with_items
