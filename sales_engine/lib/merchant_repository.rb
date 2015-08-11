@@ -30,4 +30,20 @@ class MerchantRepository
     "#<#{self.class} #{@repository.size} rows>"
   end
 
+  def most_revenue(top_x)
+    merchant_revenue = @repository.values.map do |merchant|
+      {merchant => merchant.revenue}
+    end
+
+    merchant_revenue.sort!{|m1,m2| m2.values <=> m1.values}
+    merchant_revenue[0..top_x - 1].map{|merchant| merchant.keys}.flatten
+    # merchant_revenue.sort{|merchant1, merchant2| merchant2 <=> merchant1}
+    # merchant_id = @repository.values.map do |merchant_name|
+    #   merchant.find_by_name
+    # top_merchants = @repository.values.sort do |merchant1, merchant2|
+    #   merchant2.revenue <=> merchant1.revenue
+    # end
+    # top_merchants[0..top_x - 1]
+  end
+
 end
