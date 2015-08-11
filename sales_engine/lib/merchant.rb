@@ -49,4 +49,14 @@ class Merchant
     inv_item_revenue.reduce(:+)
   end
 
+  def customers_with_pending_invoices
+    pending_customers = invoices.map do |invoice|
+      if !invoice.success?
+        customer_repo = @merchant_repository.sales_engine.customer_repository
+        customer_repo.find_by_id(invoice.customer_id)
+      end
+    end
+    pending_customers.select { |customer| customer }
+  end
+
 end

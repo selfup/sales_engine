@@ -81,13 +81,22 @@ class MerchantTest < Minitest::Test
 		assert_equal (6 * 76941 + 4 * 1859) * 0.01, result
 	end
 
-	def test_returns_merchants_favorite_customer
+	def test_returns_a_merchants_favorite_customer
 		engine = SalesEngine.new("test", true)
 		engine.startup
 		result = engine.merchant_repository.repository[1].favorite_customer
 		expected = engine.customer_repository.repository[1]
 
 		assert_equal expected, result
+	end
+
+	def test_returns_customers_with_pending_invoices
+		engine = SalesEngine.new("test", true)
+		engine.startup
+		result = engine.merchant_repository.repository[2].customers_with_pending_invoices
+		expected = engine.customer_repository.repository[1]
+
+		assert_equal expected, result[0]
 	end
 
 end
