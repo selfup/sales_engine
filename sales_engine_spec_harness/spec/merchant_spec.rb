@@ -69,7 +69,6 @@ RSpec.describe "SalesEngine merchants" do
     describe ".most_revenue" do
       it "returns the top n revenue-earners" do
         most = engine.merchant_repository.most_revenue(3)
-        require 'pry'; binding.pry
         expect(most.first.name).to eq "Dicki-Bednar"
         expect(most.last.name).to  eq "Okuneva, Prohaska and Rolfson"
       end
