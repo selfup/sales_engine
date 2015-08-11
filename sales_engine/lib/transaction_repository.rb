@@ -13,7 +13,7 @@ class TransactionRepository
 
   def load_transactions(rows)
     @repository = Hash.new(0)
-    rows.map { |row| @repository[row[:id]] = Transaction.new(row, self) }
+    rows.map { |row| @repository[row[:id].to_i] = Transaction.new(row, self) }
     @repository
   end
 

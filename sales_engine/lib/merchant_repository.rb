@@ -14,15 +14,15 @@ class MerchantRepository
 
   def load_merchants(rows)
     @repository = Hash.new(0)
-    rows.map { |row| @repository[row[:id]] = Merchant.new(row, self) }
+    rows.map { |row| @repository[row[:id].to_i] = Merchant.new(row, self) }
     @repository
   end
 
-  def find_by_merchant_name(merchant_name)
+  def find_by_name(merchant_name)
     all.detect{|merchant| merchant.name.downcase == merchant_name.downcase}
   end
 
-  def find_all_by_merchant_name(merchant_name)
+  def find_all_by_name(merchant_name)
     all.select{|merchant| merchant.name.downcase == merchant_name.downcase}
   end
 

@@ -13,12 +13,12 @@ include AllRepos
 
   def load_items(rows)
     @repository = Hash.new(0)
-    rows.map { |row| @repository[row[:id]] = Item.new(row, self) }
+    rows.map { |row| @repository[row[:id].to_i] = Item.new(row, self) }
     @repository
   end
 
-  def find_by_items_name(thing)
-    all.detect{|item| item.name.downcase == thing.downcase}
+  def find_by_name(name)
+    all.detect{|item| item.name.downcase == name.downcase}
   end
 
   def find_by_merchant_id(id)
@@ -30,11 +30,11 @@ include AllRepos
   end
 
   def find_by_unit_price(price)
-    all.detect{ |pricing| pricing.unit_price == price }
+    all.detect{ |pricing| pricing.unit_price * 0.01 == price }
   end
 
-  def find_all_by_item_name(item_name)
-    all.select{|item| item.name.downcase == item_name.downcase}
+  def find_all_by_name(name)
+    all.select{|item| item.name.downcase == name.downcase}
   end
 
   def find_all_by_merchant_id(id)

@@ -13,7 +13,7 @@ include AllRepos
 
   def load_invoices(rows)
     @repository = Hash.new(0)
-    rows.map { |row| @repository[row[:id]] = Invoice.new(row, self) }
+    rows.map { |row| @repository[row[:id].to_i] = Invoice.new(row, self) }
     @repository
   end
 

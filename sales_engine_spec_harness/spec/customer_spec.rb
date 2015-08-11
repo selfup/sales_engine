@@ -66,4 +66,3 @@ RSpec.describe "SalesEngine customers" do
     end
   end
 end
-

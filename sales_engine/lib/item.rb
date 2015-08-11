@@ -1,13 +1,15 @@
+require 'bigdecimal'
+
 class Item
   attr_reader :id, :name, :description, :merchant_id,
               :unit_price, :created_at, :updated_at
 
 	def initialize(params, item_repository)
-    @id              = params[:id]
+    @id              = params[:id].to_i
     @name            = params[:name]
     @description     = params[:description]
-    @merchant_id     = params[:merchant_id]
-    @unit_price      = params[:unit_price]
+    @merchant_id     = params[:merchant_id].to_i
+    @unit_price      = BigDecimal.new(params[:unit_price])
     @created_at      = params[:created_at]
     @updated_at      = params[:updated_at]
     @item_repository = item_repository

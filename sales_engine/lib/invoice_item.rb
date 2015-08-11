@@ -5,10 +5,10 @@ class InvoiceItem
               :unit_price, :created_at, :updated_at
 
 	def initialize(row, invoice_item_repository)
-    @id                       = row[:id]
-    @item_id                  = row[:item_id]
-    @invoice_id               = row[:invoice_id]
-    @quantity                 = row[:quantity]
+    @id                       = row[:id].to_i
+    @item_id                  = row[:item_id].to_i
+    @invoice_id               = row[:invoice_id].to_i
+    @quantity                 = row[:quantity].to_i
     @unit_price               = row[:unit_price]
     @created_at               = row[:created_at]
     @updated_at               = row[:updated_at]

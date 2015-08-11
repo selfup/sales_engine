@@ -13,7 +13,7 @@ class InvoiceItemRepository
 
   def load_invoice_items(rows)
     @repository = Hash.new(0)
-    rows.map { |row| @repository[row[:id]] = InvoiceItem.new(row, self) }
+    rows.map { |row| @repository[row[:id].to_i] = InvoiceItem.new(row, self) }
     @repository
   end
 

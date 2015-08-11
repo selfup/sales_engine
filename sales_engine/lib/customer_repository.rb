@@ -13,7 +13,7 @@ include AllRepos
 
   def load_customers(rows)
     @repository = Hash.new(0)
-    rows.map { |row| @repository[row[:id]] = Customer.new(row, self) }
+    rows.map { |row| @repository[row[:id].to_i] = Customer.new(row, self) }
     @repository
   end
 
