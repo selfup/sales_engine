@@ -27,7 +27,7 @@ class TransactionTest < Minitest::Test
 	end
 
 	def test_it_returns_an_invoice_instance_associated_with_transactions
-		engine = SalesEngine.new(true)
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result = engine.transaction_repository.repository["3"].invoice
@@ -37,7 +37,7 @@ class TransactionTest < Minitest::Test
 	end
 
 	def test_transaction_is_successful?
-		engine = SalesEngine.new(true)
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result = engine.transaction_repository.repository.map do |key,trans|

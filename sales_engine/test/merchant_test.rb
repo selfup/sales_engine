@@ -23,7 +23,7 @@ class MerchantTest < Minitest::Test
 	end
 
 	def test_it_returns_a_collection_of_item_instances_associated_with_merchant
-		engine = SalesEngine.new("")
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result = engine.merchant_repository.repository["1"].items
@@ -44,27 +44,27 @@ class MerchantTest < Minitest::Test
 	end
 
 	def test_it_returns_a_collection_of_invoice_instances_associated_with_merchant
-		engine = SalesEngine.new("")
+		engine = SalesEngine.new("test", true)
 		engine.startup
 		result = engine.merchant_repository.repository["1"].invoices
 		result = result.map { |invoice| invoice.id }
 
 		assert_equal 2, result.length
-		assert_equal 2, result[0]
-		assert_equal 11, result[1]
+		assert_equal "2", result[0]
+		assert_equal "11", result[1]
 	end
 
 
 	def test_it_returns_the_total_revenue_across_all_transactions
-		engine = SalesEngine.new("")
+		engine = SalesEngine.new("test", true)
 		engine.startup
-		result = engine.merchant_repository.repository[1].revenue
+		result = engine.merchant_repository.repository["1"].revenue
 
 		assert_equal ((6 * 76941) + (4 * 1859)), result
 	end
 
 	def test_it_returns_a_revenue_of_zero
-		engine = SalesEngine.new("")
+		engine = SalesEngine.new("test", true)
 		engine.startup
 		result = engine.merchant_repository.repository["2"].revenue
 

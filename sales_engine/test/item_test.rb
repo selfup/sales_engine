@@ -30,7 +30,7 @@ class ItemTest < Minitest::Test
 	end
 
 		def test_it_returns_a_collection_invoice_item_instance_associated_with_items
-			engine = SalesEngine.new(true)
+			engine = SalesEngine.new("test", true)
 			engine.startup
 
 			result = engine.item_repository.repository["99"].invoice_items
@@ -41,7 +41,7 @@ class ItemTest < Minitest::Test
 		end
 
 		def test_it_returns_an_item_instance_associated_with_invoice_items
-			engine = SalesEngine.new(true)
+			engine = SalesEngine.new("test", true)
 			engine.startup
 
 			result = engine.item_repository.repository["1"].merchant

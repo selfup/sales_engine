@@ -27,7 +27,7 @@ class InvoiceTest < Minitest::Test
 	end
 
 	def test_it_returns_an_invoice_instance_associated_with_transactions
-		engine = SalesEngine.new(true)
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result = engine.invoice_repository.repository["10"].transactions
@@ -38,7 +38,7 @@ class InvoiceTest < Minitest::Test
 	end
 
 	def test_it_returns_an_invoice_instance_associated_with_invoice_items
-		engine = SalesEngine.new(true)
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result = engine.invoice_repository.repository["2"].invoice_items
@@ -49,7 +49,7 @@ class InvoiceTest < Minitest::Test
 	end
 
 	def test_it_returns_an_item_collection_associated_with_invoice_items_through_invoice
-		engine = SalesEngine.new(true)
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result = engine.invoice_repository.repository["2"].items
@@ -60,7 +60,7 @@ class InvoiceTest < Minitest::Test
 	end
 
 	def test_it_returns_a_customer_instance_associated_with_invoice
-		engine = SalesEngine.new(true)
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result = engine.invoice_repository.repository["10"].customer
@@ -70,7 +70,7 @@ class InvoiceTest < Minitest::Test
 	end
 
 	def test_it_returns_a_merchant_instance_associated_with_invoice
-		engine = SalesEngine.new(true)
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result = engine.invoice_repository.repository["2"].merchant
@@ -80,7 +80,7 @@ class InvoiceTest < Minitest::Test
 	end
 
 	def test_invoice_is_in_a_successful_transaction
-		engine = SalesEngine.new(true)
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result1 = engine.invoice_repository.repository["1"].success?

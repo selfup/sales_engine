@@ -22,13 +22,15 @@ class SalesEngine
               :transaction_repository, :trans_data,
               :customer_repository, :customer_data
 
-  def initialize(file)
-    @customer_data ||= CustomerLoader.new.load_all('./csvs/customers.csv')
-    @invoice_data  ||= InvoiceLoader.new.load_all('./csvs/invoices.csv')
-    @merchant_data ||= MerchantLoader.new.load_all('./csvs/merchants.csv')
-    @item_data     ||= ItemLoader.new.load_all('./csvs/items.csv')
-    @inv_item_data ||= InvoiceItemLoader.new.load_all('./csvs/invoice_items.csv')
-    @trans_data    ||= TransactionLoader.new.load_all('./csvs/transactions.csv')
+  def initialize(file, fix = false)
+    trans  = './csvs/transactions.csv'
+    inv_it = './csvs/invoice_items.csv'
+    @customer_data ||= CustomerLoader.new.load_all('./csvs/customers.csv', fix)
+    @invoice_data  ||= InvoiceLoader.new.load_all('./csvs/invoices.csv', fix)
+    @merchant_data ||= MerchantLoader.new.load_all('./csvs/merchants.csv', fix)
+    @item_data     ||= ItemLoader.new.load_all('./csvs/items.csv', fix)
+    @inv_item_data ||= InvoiceItemLoader.new.load_all(inv_it, fix)
+    @trans_data    ||= TransactionLoader.new.load_all(trans, fix)
   end
 
   def startup

@@ -27,7 +27,7 @@ class CustomerTest < Minitest::Test
 	end
 
 	def test_it_returns_an_invoice_instance_associated_with_customers
-		engine = SalesEngine.new(true)
+		engine = SalesEngine.new("test", true)
 		engine.startup
 
 		result = engine.customer_repository.repository["2"].invoices
