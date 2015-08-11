@@ -19,11 +19,11 @@ class InvoiceItemTest < Minitest::Test
     created_at_result = invoice_items[0].created_at
     updated_at_result = invoice_items[0].updated_at
 
-    assert_equal "1", id_result
-		assert_equal "539", item_id_result
-		assert_equal "1", invoice_id_result
-		assert_equal "5", quantity_result
-		assert_equal "13635", unit_price_result
+    assert_equal 1, id_result
+		assert_equal 539, item_id_result
+		assert_equal 1, invoice_id_result
+		assert_equal 5, quantity_result
+		assert_equal 13635, unit_price_result
 		assert_equal "2012-03-27 14:54:09 UTC", created_at_result
     assert_equal "2012-03-27 14:54:09 UTC", updated_at_result
 	end
@@ -32,9 +32,9 @@ class InvoiceItemTest < Minitest::Test
 		engine = SalesEngine.new("test", true)
 		engine.startup
 
-		result = engine.invoice_item_repository.repository["9"].invoice
+		result = engine.invoice_item_repository.repository[9].invoice
 
-		assert_equal "2", result.id
+		assert_equal 2, result.id
 		assert_equal Invoice, result.class
 	end
 
@@ -42,9 +42,9 @@ class InvoiceItemTest < Minitest::Test
 		engine = SalesEngine.new("test", true)
 		engine.startup
 
-		result = engine.invoice_item_repository.repository["9"].item
+		result = engine.invoice_item_repository.repository[9].item
 
-		assert_equal "99", result.id
+		assert_equal 99, result.id
 		assert_equal Item, result.class
 	end
 
@@ -52,7 +52,7 @@ class InvoiceItemTest < Minitest::Test
 		engine = SalesEngine.new("test", true)
 		engine.startup
 
-		result = engine.invoice_item_repository.repository["1"].revenue
+		result = engine.invoice_item_repository.repository[1].revenue
 
 		assert_equal (5 * 13635), result
 	end

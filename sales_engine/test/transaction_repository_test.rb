@@ -16,7 +16,7 @@ class TransactionRepositoryTest < Minitest::Test
 		trans_data = CSV.open(file, headers: true, header_converters: :symbol)
 		trans_repo = TransactionRepository.new(trans_data, nil)
 
-    result = trans_repo.repository["1"].class
+    result = trans_repo.repository[1].class
 
     assert_equal Transaction, result
   end
@@ -39,30 +39,30 @@ class TransactionRepositoryTest < Minitest::Test
   end
 
   def test_it_finds_transaction_by_id
-    result = setup.find_by_id("3")
+    result = setup.find_by_id(3)
 
     assert_equal Transaction, result.class
-    assert_equal "3", result.id
+    assert_equal 3, result.id
   end
 
   def test_it_finds_a_transaction_given_invoice_id
-    result = setup.find_by_invoice_id("10")
+    result = setup.find_by_invoice_id(10)
 
-    assert_equal "9", result.id
+    assert_equal 9, result.id
   end
 
   def test_it_finds_all_transactions_given_invoice_id
-    result = setup.find_all_by_invoice_id("10")
+    result = setup.find_all_by_invoice_id(10)
 
     assert_equal 2, result.length
-    assert_equal "10", result[0].invoice_id
-    assert_equal "10", result[1].invoice_id
+    assert_equal 10, result[0].invoice_id
+    assert_equal 10, result[1].invoice_id
   end
 
   def test_it_finds_a_transaction_given_a_card_number
     result = setup.find_by_credit_card_number("4354495077693036")
 
-    assert_equal "3", result.id
+    assert_equal 3, result.id
   end
 
   def test_it_finds_all_transactions_given_a_card_number
@@ -76,7 +76,7 @@ class TransactionRepositoryTest < Minitest::Test
   def test_it_finds_a_transaction_result
     result = setup.find_by_result("failed")
 
-    assert_equal "3", result.id
+    assert_equal 3, result.id
   end
 
   def test_it_finds_all_successful_transactions

@@ -16,7 +16,7 @@ class MerchantTest < Minitest::Test
 		created_at_result = merchants[0].created_at
 		updated_at_result = merchants[0].updated_at
 
-		assert_equal "1", id_result
+		assert_equal 1, id_result
 		assert_equal "Schroeder-Jerde", name_result
 		assert_equal "2012-03-27 14:53:59 UTC", created_at_result
 		assert_equal "2012-03-27 14:53:59 UTC", updated_at_result
@@ -26,39 +26,39 @@ class MerchantTest < Minitest::Test
 		engine = SalesEngine.new("test", true)
 		engine.startup
 
-		result = engine.merchant_repository.repository["1"].items
+		result = engine.merchant_repository.repository[1].items
 		result = result.map { |item| item.id }
 
 		assert_equal 11, result.length
-    assert_equal "1", result[0]
-    assert_equal "2", result[1]
-    assert_equal "3", result[2]
-    assert_equal "4", result[3]
-    assert_equal "5", result[4]
-    assert_equal "6", result[5]
-    assert_equal "72", result[6]
-    assert_equal "8", result[7]
-    assert_equal "9", result[8]
-    assert_equal "99", result[9]
-    assert_equal "11", result[10]
+    assert_equal 1, result[0]
+    assert_equal 2, result[1]
+    assert_equal 3, result[2]
+    assert_equal 4, result[3]
+    assert_equal 5, result[4]
+    assert_equal 6, result[5]
+    assert_equal 72, result[6]
+    assert_equal 8, result[7]
+    assert_equal 9, result[8]
+    assert_equal 99, result[9]
+    assert_equal 11, result[10]
 	end
 
 	def test_it_returns_a_collection_of_invoice_instances_associated_with_merchant
 		engine = SalesEngine.new("test", true)
 		engine.startup
-		result = engine.merchant_repository.repository["1"].invoices
+		result = engine.merchant_repository.repository[1].invoices
 		result = result.map { |invoice| invoice.id }
 
 		assert_equal 2, result.length
-		assert_equal "2", result[0]
-		assert_equal "11", result[1]
+		assert_equal 2, result[0]
+		assert_equal 11, result[1]
 	end
 
 
 	def test_it_returns_the_total_revenue_across_all_transactions
 		engine = SalesEngine.new("test", true)
 		engine.startup
-		result = engine.merchant_repository.repository["1"].revenue
+		result = engine.merchant_repository.repository[1].revenue
 
 		assert_equal ((6 * 76941) + (4 * 1859)), result
 	end
@@ -66,7 +66,7 @@ class MerchantTest < Minitest::Test
 	def test_it_returns_a_revenue_of_zero
 		engine = SalesEngine.new("test", true)
 		engine.startup
-		result = engine.merchant_repository.repository["2"].revenue
+		result = engine.merchant_repository.repository[2].revenue
 
 		assert_equal 0, result
 	end

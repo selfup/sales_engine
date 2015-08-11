@@ -16,7 +16,7 @@ class CustomerRepositoryTest < Minitest::Test
 		customer_data = CSV.open(file, headers: true, header_converters: :symbol)
 		customer_repo = CustomerRepository.new(customer_data, nil)
 
-    result = customer_repo.repository["1"].class
+    result = customer_repo.repository[1].class
 
     assert_equal Customer, result
   end
@@ -39,10 +39,10 @@ class CustomerRepositoryTest < Minitest::Test
   end
 
   def test_it_finds_customer_by_id
-    result = setup.find_by_id("3")
+    result = setup.find_by_id(3)
 
     assert_equal Customer, result.class
-    assert_equal "3", result.id
+    assert_equal 3, result.id
   end
 
   def test_it_finds_a_customer_with_a_capital_first_name

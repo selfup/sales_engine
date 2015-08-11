@@ -16,7 +16,7 @@ class InvoiceRepositoryTest < Minitest::Test
 		invoice_data = CSV.open(file, headers: true, header_converters: :symbol)
 		invoice_repo = InvoiceRepository.new(invoice_data, nil)
 
-    result = invoice_repo.repository["1"].class
+    result = invoice_repo.repository[1].class
 
     assert_equal Invoice, result
   end
@@ -39,24 +39,24 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_finds_invoice_by_id
-    result = setup.find_by_id("3")
+    result = setup.find_by_id(3)
 
     assert_equal Invoice, result.class
-    assert_equal "3", result.id
+    assert_equal 3, result.id
   end
 
   def test_it_finds_an_invoice_customer_id
-    result = setup.find_by_customer_id("1")
+    result = setup.find_by_customer_id(1)
 
     assert_equal Invoice, result.class
-    assert_equal "1", result.customer_id
+    assert_equal 1, result.customer_id
   end
 
   def test_it_finds_an_invoice_merchant_id
-    result = setup.find_by_merchant_id("78")
+    result = setup.find_by_merchant_id(78)
 
     assert_equal Invoice, result.class
-    assert_equal "78", result.merchant_id
+    assert_equal 78, result.merchant_id
   end
 
   def test_it_finds_an_invoice_status
@@ -73,18 +73,18 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_all_customer_ids
-    result = setup.find_all_by_customer_id("1")
+    result = setup.find_all_by_customer_id(1)
 
     assert_equal 9, result.length
-    assert_equal "1", result[0].customer_id
-    assert_equal "1", result[1].customer_id
-    assert_equal "1", result[2].customer_id
-    assert_equal "1", result[3].customer_id
-    assert_equal "1", result[4].customer_id
-    assert_equal "1", result[5].customer_id
-    assert_equal "1", result[6].customer_id
-    assert_equal "1", result[7].customer_id
-    assert_equal "1", result[8].customer_id
+    assert_equal 1, result[0].customer_id
+    assert_equal 1, result[1].customer_id
+    assert_equal 1, result[2].customer_id
+    assert_equal 1, result[3].customer_id
+    assert_equal 1, result[4].customer_id
+    assert_equal 1, result[5].customer_id
+    assert_equal 1, result[6].customer_id
+    assert_equal 1, result[7].customer_id
+    assert_equal 1, result[8].customer_id
   end
 
   def test_it_returns_an_empty_array_when_an_invoice_customer_id_does_not_exist
@@ -94,11 +94,11 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_all_merchant_ids
-    result = setup.find_all_by_merchant_id("1")
+    result = setup.find_all_by_merchant_id(1)
 
     assert_equal 2, result.length
-    assert_equal "1", result[0].merchant_id
-    assert_equal "1", result[1].merchant_id
+    assert_equal 1, result[0].merchant_id
+    assert_equal 1, result[1].merchant_id
   end
 
   def test_it_returns_an_empty_array_when_an_invoice_merchant_id_does_not_exist

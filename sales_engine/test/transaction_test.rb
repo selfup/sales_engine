@@ -18,8 +18,8 @@ class TransactionTest < Minitest::Test
 		created_at_result         = transactions[0].created_at
 		updated_at_result         = transactions[0].updated_at
 
-		assert_equal "1", id_result
-		assert_equal "1", invoice_id_result
+		assert_equal 1, id_result
+		assert_equal 1, invoice_id_result
 		assert_equal "4654405418249632", credit_card_number_result
 		assert_equal "success", result_result
 		assert_equal "2012-03-27 14:54:09 UTC", created_at_result
@@ -30,9 +30,9 @@ class TransactionTest < Minitest::Test
 		engine = SalesEngine.new("test", true)
 		engine.startup
 
-		result = engine.transaction_repository.repository["3"].invoice
+		result = engine.transaction_repository.repository[3].invoice
 
-		assert_equal "4", result.id
+		assert_equal 4, result.id
 		assert_equal Invoice, result.class
 	end
 

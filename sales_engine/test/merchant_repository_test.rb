@@ -16,7 +16,7 @@ class MerchantRepositoryTest < Minitest::Test
 		merchant_data = CSV.open(file, headers: true, header_converters: :symbol)
 		merchant_repo = MerchantRepository.new(merchant_data, nil)
 
-    result = merchant_repo.repository["1"].class
+    result = merchant_repo.repository[1].class
 
     assert_equal Merchant, result
   end
@@ -39,47 +39,47 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_finds_merchant_by_id
-    result = setup.find_by_id("3")
+    result = setup.find_by_id(3)
 
     assert_equal Merchant, result.class
-    assert_equal "3", result.id
+    assert_equal 3, result.id
   end
 
   def test_it_finds_a_merchant_with_a_capital_first_name
-    result = setup.find_by_merchant_name("Williamson Group")
+    result = setup.find_by_name("Williamson Group")
 
     assert_equal Merchant, result.class
     assert_equal "Williamson Group", result.name
   end
 
   def test_it_finds_a_merchant_with_a_capital_name
-    result = setup.find_by_merchant_name("Cummings-Chiel")
+    result = setup.find_by_name("Cummings-Chiel")
 
     assert_equal Merchant, result.class
     assert_equal "cummings-chiel", result.name
   end
 
   def test_it_finds_a_merchant_with_two_first_names
-    result = setup.find_by_merchant_name("Williamson Group")
+    result = setup.find_by_name("Williamson Group")
 
     assert_equal Merchant, result.class
     assert_equal "Williamson Group", result.name
   end
 
   def test_it_does_not_return_a_merchant_with_two_first_names
-    result = setup.find_by_merchant_name("Williamson")
+    result = setup.find_by_name("Williamson")
 
     assert_equal NilClass, result.class
   end
 
   def test_it_returns_nil_for_a_merchant_that_does_not_exist
-    result = setup.find_by_merchant_name("hank")
+    result = setup.find_by_name("hank")
 
     assert_equal NilClass, result.class
   end
 
   def test_it_returns_all_merchants_with_matching_names
-    result = setup.find_all_by_merchant_name("Williamson Group")
+    result = setup.find_all_by_name("Williamson Group")
 
     assert_equal 2, result.length
     assert_equal "Williamson Group", result[0].name
@@ -87,14 +87,14 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_all_merchants_with_lowercase_names
-    result = setup.find_all_by_merchant_name("cummings-chiel")
+    result = setup.find_all_by_name("cummings-chiel")
 
     assert_equal 1, result.length
     assert_equal "cummings-chiel", result[0].name
   end
 
   def test_it_returns_an_empty_array_when_merchant_name_does_not_exist
-    result = setup.find_all_by_merchant_name("Sylvester")
+    result = setup.find_all_by_name("Sylvester")
 
     assert_equal [], result
   end
