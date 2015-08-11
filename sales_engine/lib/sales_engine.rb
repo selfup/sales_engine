@@ -22,13 +22,13 @@ class SalesEngine
               :transaction_repository, :trans_data,
               :customer_repository, :customer_data
 
-  def initialize(file = "")
-    @customer_data ||= CustomerLoader.new.load_all(file)
-    @invoice_data  ||= InvoiceLoader.new.load_all(file)
-    @merchant_data ||= MerchantLoader.new.load_all(file)
-    @item_data     ||= ItemLoader.new.load_all(file)
-    @inv_item_data ||= InvoiceItemLoader.new.load_all(file)
-    @trans_data    ||= TransactionLoader.new.load_all(file)
+  def initialize(file)
+    @customer_data ||= CustomerLoader.new.load_all('./csvs/customers.csv')
+    @invoice_data  ||= InvoiceLoader.new.load_all('./csvs/invoices.csv')
+    @merchant_data ||= MerchantLoader.new.load_all('./csvs/merchants.csv')
+    @item_data     ||= ItemLoader.new.load_all('./csvs/items.csv')
+    @inv_item_data ||= InvoiceItemLoader.new.load_all('./csvs/invoice_items.csv')
+    @trans_data    ||= TransactionLoader.new.load_all('./csvs/transactions.csv')
   end
 
   def startup
@@ -45,5 +45,5 @@ end
 if __FILE__ == $0
   engine = SalesEngine.new(true)
   engine.startup
-  binding.pry
+  # binding.pry
 end
