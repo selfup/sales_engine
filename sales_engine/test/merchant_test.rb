@@ -72,4 +72,14 @@ class MerchantTest < Minitest::Test
 		assert_equal 0, result
 	end
 
+	def test_it_returns_the_total_revenue_given_date
+		engine = SalesEngine.new("test", true)
+		engine.startup
+		date = Date.parse("2012-03-12 05:54:09 UTC")
+		result = engine.merchant_repository.repository[1].revenue(date)
+
+		assert_equal (6 * 76941 + 4 * 1859) * 0.01, result
+	end
+
+
 end

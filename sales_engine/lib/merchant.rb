@@ -22,25 +22,6 @@ class Merchant
     invoice_repo.find_all_by_merchant_id(@id)
   end
 
-  #Find Invoice_ids that match with merchant
-  #Find transactions with matching Invoice_ids
-  # def find_transaction_invoices
-  #   transactions = invoices.map do |invoice|
-  #     invoice.transactions[@id].success?
-  #   end
-  # end
-
-  # def items
-  #   transactions = @merchant_repository.sales_engine.transaction_repository
-  #   inv_items = transactions.find_all_by_invoice_id(@id)
-  #   items = inv_items.map { |inv_item| inv_item.item }
-  # end
-
-  #Check if transaction with Invoice_id is successful
-    #If transaction is successful calculate revenue
-
-  #make the date a date object
-
   def revenue(date = nil)
     total_revenue = 0
     invoices.map do |invoice|
