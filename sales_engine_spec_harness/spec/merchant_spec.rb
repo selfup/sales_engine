@@ -60,6 +60,7 @@ RSpec.describe "SalesEngine merchants" do
 
     describe ".revenue" do
       it "returns all revenue for a specific date" do
+        require 'pry'; binding.pry
         date = Date.parse "Tue, 20 Mar 2012"
 
         expect(engine.merchant_repository.revenue date).to eq BigDecimal.new("2549722.91")

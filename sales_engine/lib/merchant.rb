@@ -41,14 +41,14 @@ class Merchant
 
   #make the date a date object
 
-  def revenue(date = nil)
+  def revenue
     total_revenue = 0
     invoices.map do |invoice|
-      if invoice.success? && (date == nil || invoice.created_at == date)
+      if invoice.success?
         total_revenue += invoice_item_revenue(invoice)
       end
     end
-    total_revenue
+    total_revenue * 0.01
   end
 
   def invoice_item_revenue(invoice)
