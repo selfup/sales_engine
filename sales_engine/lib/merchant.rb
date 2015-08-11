@@ -7,8 +7,8 @@ class Merchant
 	def initialize(row, merchant_repository)
     @id                   = row[:id].to_i
     @name                 = row[:name]
-    @created_at           = row[:created_at]
-    @updated_at           = row[:updated_at]
+    @created_at           = Date.parse(row[:created_at])
+    @updated_at           = Date.parse(row[:updated_at])
     @merchant_repository  = merchant_repository
   end
 
@@ -41,10 +41,10 @@ class Merchant
 
   #make the date a date object
 
-  def revenue
+  def revenue(date = nil)
     total_revenue = 0
     invoices.map do |invoice|
-      if invoice.success?
+      if invoice.success? && (date == nil || date == invoice.created_at)
         total_revenue += invoice_item_revenue(invoice)
       end
     end

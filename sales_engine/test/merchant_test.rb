@@ -60,7 +60,7 @@ class MerchantTest < Minitest::Test
 		engine.startup
 		result = engine.merchant_repository.repository[1].revenue
 
-		assert_equal ((6 * 76941) + (4 * 1859)), result
+		assert_equal (6 * 76941 + 4 * 1859) * 0.01, result
 	end
 
 	def test_it_returns_a_revenue_of_zero
