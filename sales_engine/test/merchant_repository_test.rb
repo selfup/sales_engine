@@ -99,4 +99,7 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal [], result
   end
 
+  def test_returns_
+  end
+
 end

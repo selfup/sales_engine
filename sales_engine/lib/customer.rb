@@ -17,4 +17,24 @@ class Customer
     invoice_repo.find_all_by_customer_id(@id)
   end
 
+  def transactions
+    inv_repo = @customer_repository.sales_engine.invoice_repository
+    customer_invoices = inv_repo.find_all_by_customer_id(@id)
+    customer_transactions = customer_invoices.map do |invoice|
+      invoice.transactions
+    end
+    customer_transactions.flatten
+  end
+
+  def favorite_merchant
+    merchant_count = Hash.new(0)
+    invoices.map do |invoice|
+      merchant_count[invoice.merchant_id] += 1
+    end
+    id = merchant_count.key(merchant_count.values.max)
+    fm = @customer_repository.sales_engine.merchant_repository.find_by_id(id)
+    fm
+  end
+
+
 end
