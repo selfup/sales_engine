@@ -26,10 +26,6 @@ class MerchantRepository
     all.select{|merchant| merchant.name.downcase == merchant_name.downcase}
   end
 
-  def inspect
-    "#<#{self.class} #{@repository.size} rows>"
-  end
-
   def most_revenue(top_x)
     merchants = @repository.values.map do |merchant|
       {merchant => merchant.revenue}
@@ -49,4 +45,9 @@ class MerchantRepository
   def revenue(date)
     @repository.values.reduce(0){|sum, merchant| sum + merchant.revenue(date)}
   end
+
+  def inspect
+    "#<#{self.class} #{@repository.size} rows>"
+  end
+  
 end

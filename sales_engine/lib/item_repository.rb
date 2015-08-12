@@ -49,6 +49,19 @@ include AllRepos
     all.select{ |pricing| pricing.unit_price == price }
   end
 
+  def item_revenue(item_id)
+    inv_it = @sales_engine.invoice_item_repository.find_all_by_item_id(item_id)
+    inv_it.reduce(0){|sum,merchant| sum + merchant.revenue}
+  end
+
+  def most_revenue(top_x)
+    items = @repository.values.map do |item|
+      {item => item_revenue(item.id)}
+    end
+    items.sort!{|i1,i2| i2.values <=> i1.values}
+    items[0..top_x - 1].map{|item| item.keys}.flatten
+  end
+
   def inspect
     "#<#{self.class} #{@repository.size} rows>"
   end
