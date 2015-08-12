@@ -4,7 +4,7 @@ class Invoice
   attr_reader :id, :customer_id, :merchant_id, :status,
               :created_at, :updated_at, :invoice_repository
 
-	def initialize(params, invoice_repository)
+  def initialize(params, invoice_repository)
     @id                  = params[:id].to_i
     @customer_id         = params[:customer_id].to_i
     @merchant_id         = params[:merchant_id].to_i
