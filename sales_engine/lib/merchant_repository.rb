@@ -47,7 +47,6 @@ class MerchantRepository
   end
 
   def revenue(date)
-    require 'pry'; binding.pry
     @repository.values.reduce(0){|sum, merchant| sum + merchant.revenue(date)}
   end
 end
