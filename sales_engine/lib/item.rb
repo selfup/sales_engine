@@ -28,8 +28,8 @@ class Item
   end
 
   def best_day
-    all_successful_i_items = invoice_items.select{|i_item| i_item.invoice.success?}
-    best_date = all_successful_i_items.reduce(Hash.new(0)) do |total, inv_item|
+    all_successful_i_it = invoice_items.select{|i_item| i_item.invoice.success?}
+    best_date = all_successful_i_it.reduce(Hash.new(0)) do |total, inv_item|
       total[inv_item.invoice.created_at] += inv_item.quantity
       total
     end
