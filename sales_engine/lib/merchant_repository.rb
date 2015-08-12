@@ -31,11 +31,18 @@ class MerchantRepository
   end
 
   def most_revenue(top_x)
-    merchant_revenue = @repository.values.map do |merchant|
+    merchants = @repository.values.map do |merchant|
       {merchant => merchant.revenue}
     end
-    merchant_revenue.sort!{|m1,m2| m2.values <=> m1.values}
-    merchant_revenue[0..top_x - 1].map{|merchant| merchant.keys}.flatten
+    merchants.sort!{|m1,m2| m2.values <=> m1.values}
+    merchants[0..top_x - 1].map{|merchant| merchant.keys}.flatten
   end
 
+  def most_items(top_x)
+    merchants = @repository.values.map do |merchant|
+      {merchant => merchant.quantity_sold}
+    end
+    merchants.sort!{|m1,m2| m2.values <=> m1.values}
+    merchants[0..top_x - 1].map{|merchant| merchant.keys}.flatten
+  end
 end

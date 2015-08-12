@@ -59,4 +59,17 @@ class Merchant
     pending_customers.select { |customer| customer }
   end
 
+  def invoice_items
+    inv_items = invoices.select{|invoice| invoice.success?}
+    inv_items.map!{|invoice| invoice.invoice_items}
+    inv_items.flatten
+  end
+
+  def quantity_sold
+    quantity_total = invoice_items.map do |invoice_item|
+      invoice_item.quantity
+    end
+    quantity_total.reduce(:+)
+  end
+
 end
