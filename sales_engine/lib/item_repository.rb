@@ -61,6 +61,29 @@ include AllRepos
     items.sort!{|i1,i2| i2.values <=> i1.values}
     items[0..top_x - 1].map{|item| item.keys}.flatten
   end
+#look into refactoring methods below for increasing speed
+  def item_quantity(item_id)
+    inv_it = @sales_engine.invoice_item_repository.find_all_by_item_id(item_id)
+    invoice_quantity(inv_it)
+  end
+
+  def invoice_quantity(inv_it)
+    count = 0
+    inv_it.map do |inv_item|
+      invoice_repo = @sales_engine.invoice_repository
+      success = invoice_repo.find_by_id(inv_item.invoice_id).success?
+        count += inv_item.quantity if success
+    end
+    count
+  end
+
+  def most_items(top_x)
+    items = @repository.values.map do |item|
+      {item => item_quantity(item.id)}
+    end
+    items.sort!{|i1,i2| i2.values <=> i1.values}
+    items[0..top_x - 1].map{|item| item.keys}.flatten
+  end
 
   def inspect
     "#<#{self.class} #{@repository.size} rows>"

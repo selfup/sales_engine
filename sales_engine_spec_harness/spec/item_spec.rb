@@ -68,7 +68,6 @@ RSpec.describe "SalesEngine items" do
     describe ".most_items" do
       it "returns the top n items ranked by most sold" do
         most = engine.item_repository.most_items(37)
-
         expect(most[1].name).to   eq "Item Nam Magnam"
         expect(most.last.name).to eq "Item Ut Quaerat"
       end

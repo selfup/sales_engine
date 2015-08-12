@@ -32,6 +32,7 @@ class InvoiceItemRepository
   def find_all_by_invoice_id(id)
     all.select{ |item| item.invoice_id == id }
   end
+
   def find_by_quantity(quantity)
     all.detect{ |item| item.quantity == quantity }
   end
