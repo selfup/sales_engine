@@ -1,6 +1,5 @@
 require 'bigdecimal'
 require 'date'
-require 'pry'
 
 class Item
   attr_reader :id, :name, :description, :merchant_id,

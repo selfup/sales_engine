@@ -1,5 +1,4 @@
 require 'csv'
-require 'pry'
 require_relative 'customer_repository'
 require_relative 'customer_loader'
 require_relative 'invoice_repository'
@@ -47,5 +46,4 @@ end
 if __FILE__ == $0
   engine = SalesEngine.new(true)
   engine.startup
-  # binding.pry
 end
