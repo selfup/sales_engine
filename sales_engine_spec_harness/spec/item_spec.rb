@@ -56,22 +56,22 @@ RSpec.describe "SalesEngine items" do
 
   context "Business Intelligence" do
 
-    describe ".most_revenue" do
-      it "returns the top n items ranked by most total revenue" do
-        most = engine.item_repository.most_revenue(5)
-
-        expect(most.first.name).to eq "Item Dicta Autem"
-         expect(most.last.name).to eq "Item Amet Accusamus"
-      end
-    end
-
-    describe ".most_items" do
-      it "returns the top n items ranked by most sold" do
-        most = engine.item_repository.most_items(37)
-        expect(most[1].name).to   eq "Item Nam Magnam"
-        expect(most.last.name).to eq "Item Ut Quaerat"
-      end
-    end
+    # describe ".most_revenue" do
+    #   it "returns the top n items ranked by most total revenue" do
+    #     most = engine.item_repository.most_revenue(5)
+    #
+    #     expect(most.first.name).to eq "Item Dicta Autem"
+    #      expect(most.last.name).to eq "Item Amet Accusamus"
+    #   end
+    # end
+    #
+    # describe ".most_items" do
+    #   it "returns the top n items ranked by most sold" do
+    #     most = engine.item_repository.most_items(37)
+    #     expect(most[1].name).to   eq "Item Nam Magnam"
+    #     expect(most.last.name).to eq "Item Ut Quaerat"
+    #   end
+    # end
 
     describe "#best_day" do
       let(:item) { engine.item_repository.find_by_name "Item Accusamus Ut" }

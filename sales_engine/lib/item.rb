@@ -1,5 +1,6 @@
 require 'bigdecimal'
 require 'date'
+require 'pry'
 
 class Item
   attr_reader :id, :name, :description, :merchant_id,
@@ -26,19 +27,12 @@ class Item
     merchant_repo.find_by_id(@merchant_id)
   end
 
-  #Pull invoice_item_repo
-  #Iterate through Invoice_Items and determine if Invoice is success
-    #If it is pull date(key) and quantity(value) into Hash
-  #Determine the highest quantity and output Date
-
   def best_day
-    best_date = Hash.new(0)
-    i_i_repo = @item_repository.sales_engine.invoice_item_repository
-    inv_items = i_i_repo.repository.select{|key, item| item.invoice.success?}
-    inv_items.map do |key, inv_item|
-      best_date[inv_item.invoice.updated_at] += inv_item.quantity * inv_item.unit_price
+    all_successful_i_items = invoice_items.select{|i_item| i_item.invoice.success?}
+    best_date = all_successful_i_items.reduce(Hash.new(0)) do |total, inv_item|
+      total[inv_item.invoice.created_at] += inv_item.quantity
+      total
     end
-    require 'pry'; binding.pry
     best_date.key(best_date.values.max)
   end
 
