@@ -45,4 +45,9 @@ class MerchantRepository
     merchants.sort!{|m1,m2| m2.values <=> m1.values}
     merchants[0..top_x - 1].map{|merchant| merchant.keys}.flatten
   end
+
+  def revenue(date)
+    require 'pry'; binding.pry
+    @repository.values.reduce(0){|sum, merchant| sum + merchant.revenue(date)}
+  end
 end
