@@ -17,6 +17,17 @@ class InvoiceItemRepository
     @repository
   end
 
+  def create_new_inv_item(items, invoice_id)
+    items.map do |item|
+      id = @repository.values.length + 1
+      row = {:id => id, :item_id => item.id, :invoice_id => invoice_id,
+             :quantity => 1, :unit_price => item.unit_price,
+             :created_at => Time.new().to_s, :updated_at => Time.new().to_s}
+    item = InvoiceItem.new(row, self)
+    @repository[id] = item
+    end
+  end
+
   def find_by_item_id(id)
     all.detect{ |item| item.item_id == id }
   end

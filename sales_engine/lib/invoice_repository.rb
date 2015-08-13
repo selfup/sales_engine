@@ -1,5 +1,6 @@
 require_relative 'invoice'
 require_relative 'all_repos'
+require 'date'
 
 class InvoiceRepository
 include AllRepos
@@ -15,6 +16,16 @@ include AllRepos
     @repository = Hash.new(0)
     rows.map { |row| @repository[row[:id].to_i] = Invoice.new(row, self) }
     @repository
+  end
+
+  def create(customer:, merchant:, status: "status", items:)
+    inv_id = @repository.values.length + 1
+    row = {:id => inv_id, :customer_id => customer.id,
+           :merchant_id => merchant.id,
+           :status => "success", :created_at => Time.new().to_s,
+           :updated_at => Time.new().to_s}
+    @sales_engine.invoice_item_repository.create_new_inv_item(items, inv_id)
+    @repository[inv_id] = Invoice.new(row, self)
   end
 
   def find_by_customer_id(id)

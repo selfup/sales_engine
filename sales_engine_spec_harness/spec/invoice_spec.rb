@@ -81,7 +81,6 @@ RSpec.describe "SalesEngine invoices" do
 
       it "creates a new invoice" do
         invoice = engine.invoice_repository.create(customer: customer, merchant: merchant, items: items)
-
         items.map(&:name).each do |name|
           expect(invoice.items.map &:name).to include name
         end

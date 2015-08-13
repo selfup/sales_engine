@@ -44,4 +44,41 @@ class Invoice
     transactions.any?{|transaction| transaction.success?}
   end
 
+  # def create(invoice_data)
+  #   customer    = invoice_data[:customer]
+  #   merchant    = invoice_data[:merchant]
+  #   status      = invoice_data[:status]
+  #   items       = invoice_data[:items]
+  #   new_invoice = Invoice.new({id: next_invoice_id,
+  #                              customer_id: customer.id,
+  #                              merchant_id: merchant.id,
+  #                              status: status,
+  #                              created_at: Time.now.strftime("%c %d, %Y"),
+  #                              updated_at: Time.now.strftime("%c %d, %Y")},
+  #                              self)
+  #   records << new_invoice
+  #   sales_engine.create_invoice_items(items, new_invoice.id)
+  #   new_invoice
+  # end
+  #
+  # def next_invoice_id
+  #   if records.last.nil?
+  #     1
+  #   else
+  #     records.last.id.next
+  #   end
+  # end
+  #
+  # def charge(payment_data, id)
+  #   sales_engine.charge(payment_data, id)
+  # end
+
+  # def charge(payment_data, invoice_id)
+  #   transaction_repository.charge(payment_data, invoice_id)
+  # end
+  #
+  # def charge(payment_data)
+  #   repository.charge(payment_data, id)
+  # end
+
 end
