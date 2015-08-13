@@ -1,6 +1,5 @@
+require_relative 'test_helper'
 require 'csv'
-require 'minitest/autorun'
-require 'minitest/pride'
 require './lib/transaction_repository.rb'
 
 class TransactionRepositoryTest < Minitest::Test

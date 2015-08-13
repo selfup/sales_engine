@@ -1,3 +1,4 @@
+require_relative 'test_helper'
 require 'csv'
 require 'date'
 require 'minitest/autorun'
