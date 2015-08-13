@@ -18,11 +18,11 @@ include AllRepos
     @repository
   end
 
-  def create(customer:, merchant:, status: "status", items:)
+  def create(customer:, merchant:, status: "shipped", items:)
     inv_id = @repository.values.length + 1
     row = {:id => inv_id, :customer_id => customer.id,
            :merchant_id => merchant.id,
-           :status => "success", :created_at => Time.new().to_s,
+           :status => "shipped", :created_at => Time.new().to_s,
            :updated_at => Time.new().to_s}
     @sales_engine.invoice_item_repository.create_new_inv_item(items, inv_id)
     @repository[inv_id] = Invoice.new(row, self)

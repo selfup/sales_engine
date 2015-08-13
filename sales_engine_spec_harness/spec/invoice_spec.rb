@@ -94,7 +94,6 @@ RSpec.describe "SalesEngine invoices" do
       it "creates a transaction" do
         invoice = engine.invoice_repository.find_by_id(3)
         prior_transaction_count = invoice.transactions.count
-
         invoice.charge(credit_card_number: '1111222233334444',  credit_card_expiration_date: "10/14", result: "success")
 
         invoice = engine.invoice_repository.find_by_id(invoice.id)
