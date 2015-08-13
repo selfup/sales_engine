@@ -52,4 +52,13 @@ class ItemTest < Minitest::Test
 			assert_equal Merchant, result.class
 		end
 
+		def test_it_can_find_the_date_with_the_most_item_revenue
+			engine = SalesEngine.new("test", true)
+			engine.startup
+
+			result = engine.item_repository.repository[99].best_day
+
+			assert_equal Date.parse("2012-03-12 05:54:09 UTC"), result
+		end
+
 end

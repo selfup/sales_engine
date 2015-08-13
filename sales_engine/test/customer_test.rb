@@ -38,4 +38,25 @@ class CustomerTest < Minitest::Test
 		assert_equal Invoice, result[0].class
 	end
 
+	def test_it_returns_an_array_of_transaction_instances_associated_with_customer
+		engine = SalesEngine.new("test", true)
+		engine.startup
+
+		result = engine.customer_repository.repository[1].transactions
+
+		assert_equal 8, result.length
+		assert_equal Transaction, result.first.class
+		assert_equal 6, result[5].id
+	end
+
+	def test_merchant_with_most_successful_transactions_is_returned
+		engine = SalesEngine.new("test", true)
+		engine.startup
+
+		result = engine.customer_repository.repository[1].favorite_merchant
+
+		assert_equal Merchant, result.class
+		assert_equal 1, result.id
+	end
+
 end

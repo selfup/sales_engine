@@ -2,6 +2,7 @@ require_relative 'test_helper'
 require 'csv'
 require 'minitest/autorun'
 require 'minitest/pride'
+require './lib/sales_engine'
 require './lib/item_repository.rb'
 
 class ItemRepositoryTest < Minitest::Test
@@ -130,6 +131,29 @@ class ItemRepositoryTest < Minitest::Test
     result = setup.find_all_by_unit_price("Sylvester")
 
     assert_equal [], result
+  end
+
+  def test_it_returns_the_top_two_revenue_items_ordered_from_most_to_least
+    engine = SalesEngine.new("test", true)
+    engine.startup
+
+    result = engine.item_repository.most_revenue(2)
+
+    assert_equal 2, result.length
+    assert_equal Item, result.first.class
+    assert_equal 99, result[0].id
+  end
+
+  def test_it_returns_the_to_two_items_ranked_by_the_number_sold
+    engine = SalesEngine.new("test", true)
+    engine.startup
+
+    result = engine.item_repository.most_items(2)
+
+    assert_equal 2, result.length
+    assert_equal Item, result.first.class
+    assert_equal 99, result[0].id
+    assert_equal 6, result[1].id
   end
 
 end

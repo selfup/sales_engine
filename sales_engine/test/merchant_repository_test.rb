@@ -2,6 +2,7 @@ require_relative 'test_helper'
 require 'csv'
 require 'minitest/autorun'
 require 'minitest/pride'
+require './lib/sales_engine.rb'
 require './lib/merchant_repository.rb'
 
 class MerchantRepositoryTest < Minitest::Test
@@ -100,7 +101,16 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal [], result
   end
 
-  def test_returns_
+  def test_returns_the_top_two_merchants_with_the_most_revenue
+    engine = SalesEngine.new("test", true)
+    engine.startup
+
+    result = engine.merchant_repository.most_revenue(2)
+
+    assert_equal 2, result.length
+    assert_equal Merchant, result[0].class
+    assert_equal 1, result[0].id
+    assert_equal 6, result[1].id
   end
 
 end

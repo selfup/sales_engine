@@ -61,7 +61,7 @@ include AllRepos
     items.sort!{|i1,i2| i2.values <=> i1.values}
     items[0..top_x - 1].map{|item| item.keys}.flatten
   end
-#look into refactoring methods below for increasing speed
+
   def item_quantity(item_id)
     inv_it = @sales_engine.invoice_item_repository.find_all_by_item_id(item_id)
     invoice_quantity(inv_it)

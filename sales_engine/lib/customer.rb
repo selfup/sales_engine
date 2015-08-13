@@ -36,5 +36,4 @@ class Customer
     fm
   end
 
-
 end
