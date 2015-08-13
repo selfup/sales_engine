@@ -1,4 +1,5 @@
 require_relative 'test_helper'
+require 'date'
 require 'csv'
 require 'minitest/autorun'
 require 'minitest/pride'
@@ -111,6 +112,16 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal Merchant, result[0].class
     assert_equal 1, result[0].id
     assert_equal 6, result[1].id
+  end
+
+  def test_it_returns_collection_of_revenue_generated_by_date
+    engine = SalesEngine.new("test", true)
+    engine.startup
+
+    date = Date.parse("2012-03-12 15:54:10 UTC")
+    result = engine.merchant_repository.revenue(date)
+
+    assert_equal (6 * 76941 + 4 * 1859) * 0.01, result
   end
 
 end
